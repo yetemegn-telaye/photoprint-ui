@@ -1,0 +1,24 @@
+<div class="modal-header">
+<h4 class="modal-title">{{ title }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="dismiss()">
+    <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    {{ message }}
+    <div style="word-wrap: break-word">
+            <a href="#" *ngIf="!detailDisplayed" (click)="detailDisplayed = true" data-toggle="collapse" data-target="#moreInfo">More </a>
+            <a href="#" *ngIf="detailDisplayed" (click)="detailDisplayed = false" data-toggle="collapse" data-target="#moreInfo">Less </a>
+            <hr/>
+            <div id="moreInfo" class="collapse">
+                {{detailMessage}}
+                {{internalMessage}}<br/><br/>
+                {{errorCode}}<br/>
+                {{occuredOn}}<br/>
+                {{moreInfoUrl}}
+            </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="accept()">{{ btnOkText }}</button>
+</div>

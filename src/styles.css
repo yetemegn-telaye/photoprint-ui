@@ -1,0 +1,172 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+.carousel-item {
+  height: 30vh;
+  /* min-height: 300px; */
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
+  background-color: transparent; 
+  border: none; 
+  color: white
+}
+
+input, select {
+  width: 100%;
+  box-sizing:border-box;
+  border-radius: 5px;
+  border: 1px solid rgb(0, 0, 53);
+  color: rgba(20, 49, 102, 0.849);
+  /* padding: 20px; 
+  width: 200px;  */
+  /* height: 70%;   */
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: rgba(20, 49, 102, 0.849); 
+  color: white; 
+  transition: all 0.2s ease-in-out; 
+  border: 3px solid white; 
+  border-radius: 15px; 
+  height: 40px;
+  outline: none 
+}
+
+input:disabled[type=button], input:disabled[type=submit], input:disabled[type=reset] {
+  background-color: rgba(92, 99, 112, 0.849); 
+  color: white; 
+  transition: all 0.2s ease-in-out; 
+  border: 3px solid white; 
+  border-radius: 15px; 
+  height: 40px;
+  outline: none 
+}
+
+ input:enabled:hover[type=button], input:enabled:hover[type=submit], input:enabled:hover[type=reset] {
+  font-weight: bold;
+}
+
+table.blueTable {
+  border: 1px solid #1C6EA4;
+  background-color: white;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+table.blueTable td, table.blueTable th {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
+}
+table.blueTable tbody td {
+  font-size: 13px;
+}
+table.blueTable tr:nth-child(even) {
+  background: #D0E4F5;
+}
+table.blueTable thead {
+  background: #1C6EA4;
+  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  border-bottom: 2px solid #444444;
+}
+table.blueTable thead th {
+  font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-left: 2px solid #D0E4F5;
+  min-width: 20px;
+  text-align: center;
+}
+table.blueTable thead th:first-child {
+  border-left: none;
+}
+
+table.blueTable tfoot {
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background: #D0E4F5;
+  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  border-top: 2px solid #444444;
+}
+table.blueTable tfoot td {
+  font-size: 14px;
+  min-width: 10%;
+  text-align: center;
+}
+table.blueTable tfoot .links {
+  width: 100%;
+  text-align: right;
+}
+table.blueTable tfoot .links a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+
+/* 3D Div */
+.div3d {
+  width:800px;
+  text-align:left; 
+  margin-left: 10%;
+  align-items: center;   
+font-size: 14px;
+color: #000000;
+padding: 10px 90px;
+background: -moz-linear-gradient(
+  top,
+  #ffffff 0%,
+  #ffffff 50%,
+  #ffffff 92%,
+  #ffffff);
+background: -webkit-gradient(
+  linear, left top, left bottom,
+  from(#ffffff),
+  color-stop(0.50, #ffffff),
+  color-stop(0.92, #ffffff),
+  to(#ffffff));
+-moz-border-radius: 6px;
+-webkit-border-radius: 6px;
+border-radius: 6px;
+border: 1px solid #000000;
+-moz-box-shadow:
+  0px 1px 1px rgba(000,000,000,0.5),
+  inset 1px 2px 0px rgba(255,255,255,0.4);
+-webkit-box-shadow:
+  0px 1px 1px rgba(000,000,000,0.5),
+  inset 1px 2px 0px rgba(255,255,255,0.4);
+box-shadow:
+  0px 1px 1px rgba(000,000,000,0.5),
+  inset 1px 2px 0px rgba(255,255,255,0.4);
+}

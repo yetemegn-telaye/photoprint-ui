@@ -1,0 +1,89 @@
+<br/><br/>
+ <div class="row">
+   <div class="col-sm-3">
+        <input type="button" (click)="this.editContact()" value="Edit"/>
+   </div>
+   <div class="col-sm-3">
+        <input type="button" (click)="this.deleteContacts()" value="Delete"/>
+   </div>
+   <div class="col-sm-3">
+
+   </div>
+   <div class="col-sm-3">
+       <input type="button" value="Add New" [routerLink]="['/contacts']"/>
+   </div>
+
+ </div>
+
+
+
+
+<table class="blueTable">
+    <thead>
+        <tr>
+            <th>
+                <input [(ngModel)] = "this.selectAllValue" type="checkbox" (change) = "this.selectAll()"/>
+            </th>
+             <th *ngFor="let col of this.columns | slice:1">
+                 {{col}}
+             </th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+        <td colspan="7">
+            <div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
+        </td>
+        </tr>
+    </tfoot>
+    <tr *ngFor="let contact of this.contacts">
+        <td>
+            <input type="checkbox" [(ngModel)]="contact.selected"/>
+        </td>
+                <td *ngIf="!this.isNotPrimitive(contact.phoneNumber)">
+            <input id="chkphoneNumber" *ngIf="this.isBoolean(contact.phoneNumber)" type="checkbox" [(ngModel)]="contact.phoneNumber"/>
+            <span *ngIf="!this.isBoolean(contact.phoneNumber)">{{contact.phoneNumber}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(contact.phoneNumber)">
+             {{contact.phoneNumber.phoneNumberId}}
+        </td>
+        <td *ngIf="!this.isNotPrimitive(contact.client)">
+            <input id="chkclient" *ngIf="this.isBoolean(contact.client)" type="checkbox" [(ngModel)]="contact.client"/>
+            <span *ngIf="!this.isBoolean(contact.client)">{{contact.client}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(contact.client)">
+             {{contact.client.clientId}}
+        </td>
+        <td *ngIf="!this.isNotPrimitive(contact.shop)">
+            <input id="chkshop" *ngIf="this.isBoolean(contact.shop)" type="checkbox" [(ngModel)]="contact.shop"/>
+            <span *ngIf="!this.isBoolean(contact.shop)">{{contact.shop}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(contact.shop)">
+             {{contact.shop.shopId}}
+        </td>
+        <td *ngIf="!this.isNotPrimitive(contact.emailAddress)">
+            <input id="chkemailAddress" *ngIf="this.isBoolean(contact.emailAddress)" type="checkbox" [(ngModel)]="contact.emailAddress"/>
+            <span *ngIf="!this.isBoolean(contact.emailAddress)">{{contact.emailAddress}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(contact.emailAddress)">
+             {{contact.emailAddress.emailAddressId}}
+        </td>
+
+    </tr>
+</table>
+<!--
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-3">
+        <input type="button" (click)="this.editItem()" value="Edit"/>
+    </div>
+    <div class="col-sm-3">
+        <input type="button" value="Delete"/>
+    </div>
+     <div class="col-sm-3">
+        <input type="button" (click)="this.updateContactClicked()" value="Update"/>
+    </div> -->
+    <!-- <div class="col-sm-3">
+        <input type="button" (click)="this.deleteContactClicked()" value="Delete"/>
+    </div>
+</div> -->

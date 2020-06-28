@@ -1,0 +1,89 @@
+<br/><br/>
+ <div class="row">
+   <div class="col-sm-3">
+        <input type="button" (click)="this.editImageinfo()" value="Edit"/>
+   </div>
+   <div class="col-sm-3">
+        <input type="button" (click)="this.deleteImageinfos()" value="Delete"/>
+   </div>
+   <div class="col-sm-3">
+
+   </div>
+   <div class="col-sm-3">
+       <input type="button" value="Add New" [routerLink]="['/imageinfos']"/>
+   </div>
+
+ </div>
+
+
+
+
+<table class="blueTable">
+    <thead>
+        <tr>
+            <th>
+                <input [(ngModel)] = "this.selectAllValue" type="checkbox" (change) = "this.selectAll()"/>
+            </th>
+             <th *ngFor="let col of this.columns | slice:1">
+                 {{col}}
+             </th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+        <td colspan="7">
+            <div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
+        </td>
+        </tr>
+    </tfoot>
+    <tr *ngFor="let imageinfo of this.imageinfos">
+        <td>
+            <input type="checkbox" [(ngModel)]="imageinfo.selected"/>
+        </td>
+                <td *ngIf="!this.isNotPrimitive(imageinfo.imageSize)">
+            <input id="chkimageSize" *ngIf="this.isBoolean(imageinfo.imageSize)" type="checkbox" [(ngModel)]="imageinfo.imageSize"/>
+            <span *ngIf="!this.isBoolean(imageinfo.imageSize)">{{imageinfo.imageSize}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(imageinfo.imageSize)">
+             {{imageinfo.imageSize.imageSizeId}}
+        </td>
+        <td *ngIf="!this.isNotPrimitive(imageinfo.image)">
+            <input id="chkimage" *ngIf="this.isBoolean(imageinfo.image)" type="checkbox" [(ngModel)]="imageinfo.image"/>
+            <span *ngIf="!this.isBoolean(imageinfo.image)">{{imageinfo.image}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(imageinfo.image)">
+             {{imageinfo.image.imageId}}
+        </td>
+        <td *ngIf="!this.isNotPrimitive(imageinfo.count)">
+            <input id="chkcount" *ngIf="this.isBoolean(imageinfo.count)" type="checkbox" [(ngModel)]="imageinfo.count"/>
+            <span *ngIf="!this.isBoolean(imageinfo.count)">{{imageinfo.count}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(imageinfo.count)">
+             {{imageinfo.count.countId}}
+        </td>
+        <td *ngIf="!this.isNotPrimitive(imageinfo.order)">
+            <input id="chkorder" *ngIf="this.isBoolean(imageinfo.order)" type="checkbox" [(ngModel)]="imageinfo.order"/>
+            <span *ngIf="!this.isBoolean(imageinfo.order)">{{imageinfo.order}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(imageinfo.order)">
+             {{imageinfo.order.orderId}}
+        </td>
+
+    </tr>
+</table>
+<!--
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-3">
+        <input type="button" (click)="this.editItem()" value="Edit"/>
+    </div>
+    <div class="col-sm-3">
+        <input type="button" value="Delete"/>
+    </div>
+     <div class="col-sm-3">
+        <input type="button" (click)="this.updateImageinfoClicked()" value="Update"/>
+    </div> -->
+    <!-- <div class="col-sm-3">
+        <input type="button" (click)="this.deleteImageinfoClicked()" value="Delete"/>
+    </div>
+</div> -->

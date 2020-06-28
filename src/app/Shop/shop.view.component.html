@@ -1,0 +1,103 @@
+<br/><br/>
+ <div class="row">
+   <div class="col-sm-3">
+        <input type="button" (click)="this.editShop()" value="Edit"/>
+   </div>
+   <div class="col-sm-3">
+        <input type="button" (click)="this.deleteShops()" value="Delete"/>
+   </div>
+   <div class="col-sm-3">
+
+   </div>
+   <div class="col-sm-3">
+       <input type="button" value="Add New" [routerLink]="['/shops']"/>
+   </div>
+
+ </div>
+
+
+
+
+<table class="blueTable">
+    <thead>
+        <tr>
+            <th>
+                <input [(ngModel)] = "this.selectAllValue" type="checkbox" (change) = "this.selectAll()"/>
+            </th>
+             <th *ngFor="let col of this.columns | slice:1">
+                 {{col}}
+             </th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+        <td colspan="7">
+            <div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
+        </td>
+        </tr>
+    </tfoot>
+    <tr *ngFor="let shop of this.shops">
+        <td>
+            <input type="checkbox" [(ngModel)]="shop.selected"/>
+        </td>
+                <td *ngIf="!this.isNotPrimitive(shop.workingDays)">
+            <input id="chkworkingDays" *ngIf="this.isBoolean(shop.workingDays)" type="checkbox" [(ngModel)]="shop.workingDays"/>
+            <span *ngIf="!this.isBoolean(shop.workingDays)">{{shop.workingDays}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(shop.workingDays)">
+             {{shop.workingDays.workingDaysId}}
+        </td>
+        <td *ngIf="!this.isNotPrimitive(shop.name)">
+            <input id="chkname" *ngIf="this.isBoolean(shop.name)" type="checkbox" [(ngModel)]="shop.name"/>
+            <span *ngIf="!this.isBoolean(shop.name)">{{shop.name}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(shop.name)">
+             {{shop.name.nameId}}
+        </td>
+        <td *ngIf="!this.isNotPrimitive(shop.workingHrStart)">
+            <input id="chkworkingHrStart" *ngIf="this.isBoolean(shop.workingHrStart)" type="checkbox" [(ngModel)]="shop.workingHrStart"/>
+            <span *ngIf="!this.isBoolean(shop.workingHrStart)">{{shop.workingHrStart}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(shop.workingHrStart)">
+             {{shop.workingHrStart.workingHrStartId}}
+        </td>
+        <td *ngIf="!this.isNotPrimitive(shop.deliveryOpt)">
+            <input id="chkdeliveryOpt" *ngIf="this.isBoolean(shop.deliveryOpt)" type="checkbox" [(ngModel)]="shop.deliveryOpt"/>
+            <span *ngIf="!this.isBoolean(shop.deliveryOpt)">{{shop.deliveryOpt}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(shop.deliveryOpt)">
+             {{shop.deliveryOpt.deliveryOptId}}
+        </td>
+        <td *ngIf="!this.isNotPrimitive(shop.contact)">
+            <input id="chkcontact" *ngIf="this.isBoolean(shop.contact)" type="checkbox" [(ngModel)]="shop.contact"/>
+            <span *ngIf="!this.isBoolean(shop.contact)">{{shop.contact}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(shop.contact)">
+             {{shop.contact.contactId}}
+        </td>
+        <td *ngIf="!this.isNotPrimitive(shop.workingHrEnd)">
+            <input id="chkworkingHrEnd" *ngIf="this.isBoolean(shop.workingHrEnd)" type="checkbox" [(ngModel)]="shop.workingHrEnd"/>
+            <span *ngIf="!this.isBoolean(shop.workingHrEnd)">{{shop.workingHrEnd}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(shop.workingHrEnd)">
+             {{shop.workingHrEnd.workingHrEndId}}
+        </td>
+
+    </tr>
+</table>
+<!--
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-3">
+        <input type="button" (click)="this.editItem()" value="Edit"/>
+    </div>
+    <div class="col-sm-3">
+        <input type="button" value="Delete"/>
+    </div>
+     <div class="col-sm-3">
+        <input type="button" (click)="this.updateShopClicked()" value="Update"/>
+    </div> -->
+    <!-- <div class="col-sm-3">
+        <input type="button" (click)="this.deleteShopClicked()" value="Delete"/>
+    </div>
+</div> -->

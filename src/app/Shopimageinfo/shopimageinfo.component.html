@@ -1,0 +1,193 @@
+<div class="row">
+    <div class="col-sm-3"> <h3> Shopimageinfo </h3></div>
+    <div class="col-sm-3"> </div>
+    <div class="col-sm-3"> </div>
+    <div class="col-sm-3">
+        <input type="button" [routerLink]="['/shopimageinfos-view']" value="View All"/>
+    </div>
+</div>
+
+<form #shopimageinfo="ngForm" name="frmShopimageinfo" (ngSubmit)="shopimageinfo.form.valid && this.createShopimageinfoClicked()">
+ <fieldset style="padding:3%; min-height: 250px;">
+  <div class="row form-group has-error" >
+      <div class="col-sm-2">
+      <label for="txtName" >imagePrice: </label>
+    </div>
+    <div class="col-sm-3" *ngIf="this.imagePrices === undefined && this.imagePrice === undefined" >
+       <div *ngIf="'any' === 'boolean'" [class.has-error]="imagePriceCtrl.invalid">
+          <input id="chkimagePrice"  requiredpattern="^[0-9]+(\.[0-9]{1,2})?$"
+          class="form-control" #imagePriceCtrl="ngModel" [ngClass]="{ 'is-invalid': (imagePriceCtrl.touched && imagePriceCtrl.invalid) || (shopimageinfo.submitted && imagePriceCtrl.invalid) }"
+          type="checkbox" name="imagePrice" [(ngModel)]="this.shopimageinfoDto.imagePrice"/>
+            <div *ngIf="(imagePriceCtrl.invalid) " class="invalid-feedback">
+                					<div *ngIf="imagePriceCtrl.errors.required">imagePrice is required. </div>
+					<div *ngIf="imagePriceCtrl.errors.pattern">imagePrice is invalid currency amount</div>
+
+            </div>
+            <br/><br/>
+       </div>
+       <div *ngIf="'any' !== 'boolean'" [class.has-error]="imagePriceCtrl.invalid">
+          <input id="txtimagePrice"  requiredpattern="^[0-9]+(\.[0-9]{1,2})?$"
+          class="form-control" #imagePriceCtrl="ngModel" [ngClass]="{ 'is-invalid': (imagePriceCtrl.touched && imagePriceCtrl.invalid) || (shopimageinfo.submitted && imagePriceCtrl.invalid) }"
+           name="imagePrice" type="text" [(ngModel)]="this.shopimageinfoDto.imagePrice"/>
+            <div *ngIf="(imagePriceCtrl.invalid) " class="invalid-feedback">
+                 					<div *ngIf="imagePriceCtrl.errors.required">imagePrice is required. </div>
+					<div *ngIf="imagePriceCtrl.errors.pattern">imagePrice is invalid currency amount</div>
+
+            </div>
+            <br/><br/>
+       </div>
+    </div>
+    <div class="col-sm-3" *ngIf="this.imagePrices !== undefined && this.imagePrice === undefined" [class.has-error]="imagePriceCtrl.invalid">
+        <select class="form-control"  requiredpattern="^[0-9]+(\.[0-9]{1,2})?$"
+                      #imagePriceCtrl="ngModel" [ngClass]="{ 'is-invalid': (imagePriceCtrl.touched && imagePriceCtrl.invalid) || (shopimageinfo.submitted && imagePriceCtrl.invalid) }"
+                       [(ngModel)] = "this.shopimageinfoDto.imagePrice"  name="imagePrice"
+                       (ngChange) = "this.selectimagePrice($event)">
+                <option *ngFor="let colVal of this.imagePrices" [ngValue] = "colVal">
+                    {{colVal.imagePriceId}}
+                </option>
+        </select>
+        <div *ngIf="(imagePriceCtrl.invalid) " class="invalid-feedback">
+             					<div *ngIf="imagePriceCtrl.errors.required">imagePrice is required. </div>
+					<div *ngIf="imagePriceCtrl.errors.pattern">imagePrice is invalid currency amount</div>
+
+        </div>
+        <br/><br/>
+     </div>
+    <div class="col-sm-3" *ngIf="this.imagePrice !== undefined && this.imagePrices === undefined" [class.has-error]="imagePriceCtrl.invalid">
+         <select class="form-control"  requiredpattern="^[0-9]+(\.[0-9]{1,2})?$"
+                       #imagePriceCtrl="ngModel" [ngClass]="{ 'is-invalid': (imagePriceCtrl.touched && imagePriceCtrl.invalid) || (shopimageinfo.submitted && imagePriceCtrl.invalid) }"
+                       [(ngModel)] = "this.shopimageinfoDto.imagePrice" name="imagePrice"
+                       (ngChange) = "this.selectimagePrice($event)">
+                 <option *ngFor="let colVal of this.imagePrice.values()" [ngValue] = "colVal">
+                     {{colVal}}
+                 </option>
+         </select>
+         <div *ngIf="(imagePriceCtrl.invalid)" class="invalid-feedback">
+              					<div *ngIf="imagePriceCtrl.errors.required">imagePrice is required. </div>
+					<div *ngIf="imagePriceCtrl.errors.pattern">imagePrice is invalid currency amount</div>
+
+         </div>
+         <br/><br/>
+     </div>
+  </div>
+<div class="row form-group has-error" >
+      <div class="col-sm-2">
+      <label for="txtName" >imageSize: </label>
+    </div>
+    <div class="col-sm-3" *ngIf="this.imageSizes === undefined && this.imageSize === undefined" >
+       <div *ngIf="'any' === 'boolean'" [class.has-error]="imageSizeCtrl.invalid">
+          <input id="chkimageSize"  required
+          class="form-control" #imageSizeCtrl="ngModel" [ngClass]="{ 'is-invalid': (imageSizeCtrl.touched && imageSizeCtrl.invalid) || (shopimageinfo.submitted && imageSizeCtrl.invalid) }"
+          type="checkbox" name="imageSize" [(ngModel)]="this.shopimageinfoDto.imageSize"/>
+            <div *ngIf="(imageSizeCtrl.invalid) " class="invalid-feedback">
+                					<div *ngIf="imageSizeCtrl.errors.required">imageSize is required. </div>
+
+            </div>
+            <br/><br/>
+       </div>
+       <div *ngIf="'any' !== 'boolean'" [class.has-error]="imageSizeCtrl.invalid">
+          <input id="txtimageSize"  required
+          class="form-control" #imageSizeCtrl="ngModel" [ngClass]="{ 'is-invalid': (imageSizeCtrl.touched && imageSizeCtrl.invalid) || (shopimageinfo.submitted && imageSizeCtrl.invalid) }"
+           name="imageSize" type="text" [(ngModel)]="this.shopimageinfoDto.imageSize"/>
+            <div *ngIf="(imageSizeCtrl.invalid) " class="invalid-feedback">
+                 					<div *ngIf="imageSizeCtrl.errors.required">imageSize is required. </div>
+
+            </div>
+            <br/><br/>
+       </div>
+    </div>
+    <div class="col-sm-3" *ngIf="this.imageSizes !== undefined && this.imageSize === undefined" [class.has-error]="imageSizeCtrl.invalid">
+        <select class="form-control"  required
+                      #imageSizeCtrl="ngModel" [ngClass]="{ 'is-invalid': (imageSizeCtrl.touched && imageSizeCtrl.invalid) || (shopimageinfo.submitted && imageSizeCtrl.invalid) }"
+                       [(ngModel)] = "this.shopimageinfoDto.imageSize"  name="imageSize"
+                       (ngChange) = "this.selectimageSize($event)">
+                <option *ngFor="let colVal of this.imageSizes" [ngValue] = "colVal">
+                    {{colVal.imageSizeId}}
+                </option>
+        </select>
+        <div *ngIf="(imageSizeCtrl.invalid) " class="invalid-feedback">
+             					<div *ngIf="imageSizeCtrl.errors.required">imageSize is required. </div>
+
+        </div>
+        <br/><br/>
+     </div>
+    <div class="col-sm-3" *ngIf="this.imageSize !== undefined && this.imageSizes === undefined" [class.has-error]="imageSizeCtrl.invalid">
+         <select class="form-control"  required
+                       #imageSizeCtrl="ngModel" [ngClass]="{ 'is-invalid': (imageSizeCtrl.touched && imageSizeCtrl.invalid) || (shopimageinfo.submitted && imageSizeCtrl.invalid) }"
+                       [(ngModel)] = "this.shopimageinfoDto.imageSize" name="imageSize"
+                       (ngChange) = "this.selectimageSize($event)">
+                 <option *ngFor="let colVal of this.imageSize.values()" [ngValue] = "colVal">
+                     {{colVal}}
+                 </option>
+         </select>
+         <div *ngIf="(imageSizeCtrl.invalid)" class="invalid-feedback">
+              					<div *ngIf="imageSizeCtrl.errors.required">imageSize is required. </div>
+
+         </div>
+         <br/><br/>
+     </div>
+  </div>
+<div class="row form-group has-error" >
+      <div class="col-sm-2">
+      <label for="txtName" >shop: </label>
+    </div>
+    <div class="col-sm-3" *ngIf="this.shops === undefined && this.shop === undefined" >
+       <div *ngIf="'any' === 'boolean'" [class.has-error]="shopCtrl.invalid">
+          <input id="chkshop" 
+          class="form-control" #shopCtrl="ngModel" [ngClass]="{ 'is-invalid': (shopCtrl.touched && shopCtrl.invalid) || (shopimageinfo.submitted && shopCtrl.invalid) }"
+          type="checkbox" name="shop" [(ngModel)]="this.shopimageinfoDto.shop"/>
+            <div *ngIf="(shopCtrl.invalid) " class="invalid-feedback">
+                
+            </div>
+            <br/><br/>
+       </div>
+       <div *ngIf="'any' !== 'boolean'" [class.has-error]="shopCtrl.invalid">
+          <input id="txtshop" 
+          class="form-control" #shopCtrl="ngModel" [ngClass]="{ 'is-invalid': (shopCtrl.touched && shopCtrl.invalid) || (shopimageinfo.submitted && shopCtrl.invalid) }"
+           name="shop" type="text" [(ngModel)]="this.shopimageinfoDto.shop"/>
+            <div *ngIf="(shopCtrl.invalid) " class="invalid-feedback">
+                 
+            </div>
+            <br/><br/>
+       </div>
+    </div>
+    <div class="col-sm-3" *ngIf="this.shops !== undefined && this.shop === undefined" [class.has-error]="shopCtrl.invalid">
+        <select class="form-control" 
+                      #shopCtrl="ngModel" [ngClass]="{ 'is-invalid': (shopCtrl.touched && shopCtrl.invalid) || (shopimageinfo.submitted && shopCtrl.invalid) }"
+                       [(ngModel)] = "this.shopimageinfoDto.shop"  name="shop"
+                       (ngChange) = "this.selectshop($event)">
+                <option *ngFor="let colVal of this.shops" [ngValue] = "colVal">
+                    {{colVal.shopId}}
+                </option>
+        </select>
+        <div *ngIf="(shopCtrl.invalid) " class="invalid-feedback">
+             
+        </div>
+        <br/><br/>
+     </div>
+    <div class="col-sm-3" *ngIf="this.shop !== undefined && this.shops === undefined" [class.has-error]="shopCtrl.invalid">
+         <select class="form-control" 
+                       #shopCtrl="ngModel" [ngClass]="{ 'is-invalid': (shopCtrl.touched && shopCtrl.invalid) || (shopimageinfo.submitted && shopCtrl.invalid) }"
+                       [(ngModel)] = "this.shopimageinfoDto.shop" name="shop"
+                       (ngChange) = "this.selectshop($event)">
+                 <option *ngFor="let colVal of this.shop.values()" [ngValue] = "colVal">
+                     {{colVal}}
+                 </option>
+         </select>
+         <div *ngIf="(shopCtrl.invalid)" class="invalid-feedback">
+              
+         </div>
+         <br/><br/>
+     </div>
+  </div>
+
+ </fieldset>
+
+   <div class="row">
+     <div class="col-sm-4"></div>
+     <div class="col-sm-4">
+          <input type="submit" value="Save"/>
+     </div>
+     <div class="col-sm-4"></div>
+   </div>
+</form>

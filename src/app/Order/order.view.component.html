@@ -1,0 +1,75 @@
+<br/><br/>
+ <div class="row">
+   <div class="col-sm-3">
+        <input type="button" (click)="this.editOrder()" value="Edit"/>
+   </div>
+   <div class="col-sm-3">
+        <input type="button" (click)="this.deleteOrders()" value="Delete"/>
+   </div>
+   <div class="col-sm-3">
+
+   </div>
+   <div class="col-sm-3">
+       <input type="button" value="Add New" [routerLink]="['/orders']"/>
+   </div>
+
+ </div>
+
+
+
+
+<table class="blueTable">
+    <thead>
+        <tr>
+            <th>
+                <input [(ngModel)] = "this.selectAllValue" type="checkbox" (change) = "this.selectAll()"/>
+            </th>
+             <th *ngFor="let col of this.columns | slice:1">
+                 {{col}}
+             </th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+        <td colspan="7">
+            <div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
+        </td>
+        </tr>
+    </tfoot>
+    <tr *ngFor="let order of this.orders">
+        <td>
+            <input type="checkbox" [(ngModel)]="order.selected"/>
+        </td>
+                <td *ngIf="!this.isNotPrimitive(order.status)">
+            <input id="chkstatus" *ngIf="this.isBoolean(order.status)" type="checkbox" [(ngModel)]="order.status"/>
+            <span *ngIf="!this.isBoolean(order.status)">{{order.status}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(order.status)">
+             {{order.status.statusId}}
+        </td>
+        <td *ngIf="!this.isNotPrimitive(order.date)">
+            <input id="chkdate" *ngIf="this.isBoolean(order.date)" type="checkbox" [(ngModel)]="order.date"/>
+            <span *ngIf="!this.isBoolean(order.date)">{{order.date}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(order.date)">
+             {{order.date.dateId}}
+        </td>
+
+    </tr>
+</table>
+<!--
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-3">
+        <input type="button" (click)="this.editItem()" value="Edit"/>
+    </div>
+    <div class="col-sm-3">
+        <input type="button" value="Delete"/>
+    </div>
+     <div class="col-sm-3">
+        <input type="button" (click)="this.updateOrderClicked()" value="Update"/>
+    </div> -->
+    <!-- <div class="col-sm-3">
+        <input type="button" (click)="this.deleteOrderClicked()" value="Delete"/>
+    </div>
+</div> -->

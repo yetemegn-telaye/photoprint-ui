@@ -1,0 +1,246 @@
+<div class="row">
+    <div class="col-sm-3"> <h3> Imageinfo </h3></div>
+    <div class="col-sm-3"> </div>
+    <div class="col-sm-3"> </div>
+    <div class="col-sm-3">
+        <input type="button" [routerLink]="['/imageinfos-view']" value="View All"/>
+    </div>
+</div>
+
+<form #imageinfo="ngForm" name="frmImageinfo" (ngSubmit)="imageinfo.form.valid && this.createImageinfoClicked()">
+ <fieldset style="padding:3%; min-height: 250px;">
+  <div class="row form-group has-error" >
+      <div class="col-sm-2">
+      <label for="txtName" >imageSize: </label>
+    </div>
+    <div class="col-sm-3" *ngIf="this.imageSizes === undefined && this.imageSize === undefined" >
+       <div *ngIf="'any' === 'boolean'" [class.has-error]="imageSizeCtrl.invalid">
+          <input id="chkimageSize"  required
+          class="form-control" #imageSizeCtrl="ngModel" [ngClass]="{ 'is-invalid': (imageSizeCtrl.touched && imageSizeCtrl.invalid) || (imageinfo.submitted && imageSizeCtrl.invalid) }"
+          type="checkbox" name="imageSize" [(ngModel)]="this.imageinfoDto.imageSize"/>
+            <div *ngIf="(imageSizeCtrl.invalid) " class="invalid-feedback">
+                					<div *ngIf="imageSizeCtrl.errors.required">imageSize is required. </div>
+
+            </div>
+            <br/><br/>
+       </div>
+       <div *ngIf="'any' !== 'boolean'" [class.has-error]="imageSizeCtrl.invalid">
+          <input id="txtimageSize"  required
+          class="form-control" #imageSizeCtrl="ngModel" [ngClass]="{ 'is-invalid': (imageSizeCtrl.touched && imageSizeCtrl.invalid) || (imageinfo.submitted && imageSizeCtrl.invalid) }"
+           name="imageSize" type="text" [(ngModel)]="this.imageinfoDto.imageSize"/>
+            <div *ngIf="(imageSizeCtrl.invalid) " class="invalid-feedback">
+                 					<div *ngIf="imageSizeCtrl.errors.required">imageSize is required. </div>
+
+            </div>
+            <br/><br/>
+       </div>
+    </div>
+    <div class="col-sm-3" *ngIf="this.imageSizes !== undefined && this.imageSize === undefined" [class.has-error]="imageSizeCtrl.invalid">
+        <select class="form-control"  required
+                      #imageSizeCtrl="ngModel" [ngClass]="{ 'is-invalid': (imageSizeCtrl.touched && imageSizeCtrl.invalid) || (imageinfo.submitted && imageSizeCtrl.invalid) }"
+                       [(ngModel)] = "this.imageinfoDto.imageSize"  name="imageSize"
+                       (ngChange) = "this.selectimageSize($event)">
+                <option *ngFor="let colVal of this.imageSizes" [ngValue] = "colVal">
+                    {{colVal.imageSizeId}}
+                </option>
+        </select>
+        <div *ngIf="(imageSizeCtrl.invalid) " class="invalid-feedback">
+             					<div *ngIf="imageSizeCtrl.errors.required">imageSize is required. </div>
+
+        </div>
+        <br/><br/>
+     </div>
+    <div class="col-sm-3" *ngIf="this.imageSize !== undefined && this.imageSizes === undefined" [class.has-error]="imageSizeCtrl.invalid">
+         <select class="form-control"  required
+                       #imageSizeCtrl="ngModel" [ngClass]="{ 'is-invalid': (imageSizeCtrl.touched && imageSizeCtrl.invalid) || (imageinfo.submitted && imageSizeCtrl.invalid) }"
+                       [(ngModel)] = "this.imageinfoDto.imageSize" name="imageSize"
+                       (ngChange) = "this.selectimageSize($event)">
+                 <option *ngFor="let colVal of this.imageSize.values()" [ngValue] = "colVal">
+                     {{colVal}}
+                 </option>
+         </select>
+         <div *ngIf="(imageSizeCtrl.invalid)" class="invalid-feedback">
+              					<div *ngIf="imageSizeCtrl.errors.required">imageSize is required. </div>
+
+         </div>
+         <br/><br/>
+     </div>
+  </div>
+<div class="row form-group has-error" >
+      <div class="col-sm-2">
+      <label for="txtName" >image: </label>
+    </div>
+    <div class="col-sm-3" *ngIf="this.images === undefined && this.image === undefined" >
+       <div *ngIf="'string' === 'boolean'" [class.has-error]="imageCtrl.invalid">
+          <input id="chkimage" 
+          class="form-control" #imageCtrl="ngModel" [ngClass]="{ 'is-invalid': (imageCtrl.touched && imageCtrl.invalid) || (imageinfo.submitted && imageCtrl.invalid) }"
+          type="checkbox" name="image" [(ngModel)]="this.imageinfoDto.image"/>
+            <div *ngIf="(imageCtrl.invalid) " class="invalid-feedback">
+                
+            </div>
+            <br/><br/>
+       </div>
+       <div *ngIf="'string' !== 'boolean'" [class.has-error]="imageCtrl.invalid">
+          <input id="txtimage" 
+          class="form-control" #imageCtrl="ngModel" [ngClass]="{ 'is-invalid': (imageCtrl.touched && imageCtrl.invalid) || (imageinfo.submitted && imageCtrl.invalid) }"
+           name="image" type="text" [(ngModel)]="this.imageinfoDto.image"/>
+            <div *ngIf="(imageCtrl.invalid) " class="invalid-feedback">
+                 
+            </div>
+            <br/><br/>
+       </div>
+    </div>
+    <div class="col-sm-3" *ngIf="this.images !== undefined && this.image === undefined" [class.has-error]="imageCtrl.invalid">
+        <select class="form-control" 
+                      #imageCtrl="ngModel" [ngClass]="{ 'is-invalid': (imageCtrl.touched && imageCtrl.invalid) || (imageinfo.submitted && imageCtrl.invalid) }"
+                       [(ngModel)] = "this.imageinfoDto.image"  name="image"
+                       (ngChange) = "this.selectimage($event)">
+                <option *ngFor="let colVal of this.images" [ngValue] = "colVal">
+                    {{colVal.imageId}}
+                </option>
+        </select>
+        <div *ngIf="(imageCtrl.invalid) " class="invalid-feedback">
+             
+        </div>
+        <br/><br/>
+     </div>
+    <div class="col-sm-3" *ngIf="this.image !== undefined && this.images === undefined" [class.has-error]="imageCtrl.invalid">
+         <select class="form-control" 
+                       #imageCtrl="ngModel" [ngClass]="{ 'is-invalid': (imageCtrl.touched && imageCtrl.invalid) || (imageinfo.submitted && imageCtrl.invalid) }"
+                       [(ngModel)] = "this.imageinfoDto.image" name="image"
+                       (ngChange) = "this.selectimage($event)">
+                 <option *ngFor="let colVal of this.image.values()" [ngValue] = "colVal">
+                     {{colVal}}
+                 </option>
+         </select>
+         <div *ngIf="(imageCtrl.invalid)" class="invalid-feedback">
+              
+         </div>
+         <br/><br/>
+     </div>
+  </div>
+<div class="row form-group has-error" >
+      <div class="col-sm-2">
+      <label for="txtName" >count: </label>
+    </div>
+    <div class="col-sm-3" *ngIf="this.counts === undefined && this.count === undefined" >
+       <div *ngIf="'number' === 'boolean'" [class.has-error]="countCtrl.invalid">
+          <input id="chkcount"  required  pattern="[0-9]*"
+          class="form-control" #countCtrl="ngModel" [ngClass]="{ 'is-invalid': (countCtrl.touched && countCtrl.invalid) || (imageinfo.submitted && countCtrl.invalid) }"
+          type="checkbox" name="count" [(ngModel)]="this.imageinfoDto.count"/>
+            <div *ngIf="(countCtrl.invalid) " class="invalid-feedback">
+                					<div *ngIf="countCtrl.errors.required">count is required. </div>
+					<div *ngIf="countCtrl.errors.pattern">Accepts only numbers</div>
+
+            </div>
+            <br/><br/>
+       </div>
+       <div *ngIf="'number' !== 'boolean'" [class.has-error]="countCtrl.invalid">
+          <input id="txtcount"  required  pattern="[0-9]*"
+          class="form-control" #countCtrl="ngModel" [ngClass]="{ 'is-invalid': (countCtrl.touched && countCtrl.invalid) || (imageinfo.submitted && countCtrl.invalid) }"
+           name="count" type="text" [(ngModel)]="this.imageinfoDto.count"/>
+            <div *ngIf="(countCtrl.invalid) " class="invalid-feedback">
+                 					<div *ngIf="countCtrl.errors.required">count is required. </div>
+					<div *ngIf="countCtrl.errors.pattern">Accepts only numbers</div>
+
+            </div>
+            <br/><br/>
+       </div>
+    </div>
+    <div class="col-sm-3" *ngIf="this.counts !== undefined && this.count === undefined" [class.has-error]="countCtrl.invalid">
+        <select class="form-control"  required  pattern="[0-9]*"
+                      #countCtrl="ngModel" [ngClass]="{ 'is-invalid': (countCtrl.touched && countCtrl.invalid) || (imageinfo.submitted && countCtrl.invalid) }"
+                       [(ngModel)] = "this.imageinfoDto.count"  name="count"
+                       (ngChange) = "this.selectcount($event)">
+                <option *ngFor="let colVal of this.counts" [ngValue] = "colVal">
+                    {{colVal.countId}}
+                </option>
+        </select>
+        <div *ngIf="(countCtrl.invalid) " class="invalid-feedback">
+             					<div *ngIf="countCtrl.errors.required">count is required. </div>
+					<div *ngIf="countCtrl.errors.pattern">Accepts only numbers</div>
+
+        </div>
+        <br/><br/>
+     </div>
+    <div class="col-sm-3" *ngIf="this.count !== undefined && this.counts === undefined" [class.has-error]="countCtrl.invalid">
+         <select class="form-control"  required  pattern="[0-9]*"
+                       #countCtrl="ngModel" [ngClass]="{ 'is-invalid': (countCtrl.touched && countCtrl.invalid) || (imageinfo.submitted && countCtrl.invalid) }"
+                       [(ngModel)] = "this.imageinfoDto.count" name="count"
+                       (ngChange) = "this.selectcount($event)">
+                 <option *ngFor="let colVal of this.count.values()" [ngValue] = "colVal">
+                     {{colVal}}
+                 </option>
+         </select>
+         <div *ngIf="(countCtrl.invalid)" class="invalid-feedback">
+              					<div *ngIf="countCtrl.errors.required">count is required. </div>
+					<div *ngIf="countCtrl.errors.pattern">Accepts only numbers</div>
+
+         </div>
+         <br/><br/>
+     </div>
+  </div>
+<div class="row form-group has-error" >
+      <div class="col-sm-2">
+      <label for="txtName" >order: </label>
+    </div>
+    <div class="col-sm-3" *ngIf="this.orders === undefined && this.order === undefined" >
+       <div *ngIf="'any' === 'boolean'" [class.has-error]="orderCtrl.invalid">
+          <input id="chkorder" 
+          class="form-control" #orderCtrl="ngModel" [ngClass]="{ 'is-invalid': (orderCtrl.touched && orderCtrl.invalid) || (imageinfo.submitted && orderCtrl.invalid) }"
+          type="checkbox" name="order" [(ngModel)]="this.imageinfoDto.order"/>
+            <div *ngIf="(orderCtrl.invalid) " class="invalid-feedback">
+                
+            </div>
+            <br/><br/>
+       </div>
+       <div *ngIf="'any' !== 'boolean'" [class.has-error]="orderCtrl.invalid">
+          <input id="txtorder" 
+          class="form-control" #orderCtrl="ngModel" [ngClass]="{ 'is-invalid': (orderCtrl.touched && orderCtrl.invalid) || (imageinfo.submitted && orderCtrl.invalid) }"
+           name="order" type="text" [(ngModel)]="this.imageinfoDto.order"/>
+            <div *ngIf="(orderCtrl.invalid) " class="invalid-feedback">
+                 
+            </div>
+            <br/><br/>
+       </div>
+    </div>
+    <div class="col-sm-3" *ngIf="this.orders !== undefined && this.order === undefined" [class.has-error]="orderCtrl.invalid">
+        <select class="form-control" 
+                      #orderCtrl="ngModel" [ngClass]="{ 'is-invalid': (orderCtrl.touched && orderCtrl.invalid) || (imageinfo.submitted && orderCtrl.invalid) }"
+                       [(ngModel)] = "this.imageinfoDto.order"  name="order"
+                       (ngChange) = "this.selectorder($event)">
+                <option *ngFor="let colVal of this.orders" [ngValue] = "colVal">
+                    {{colVal.orderId}}
+                </option>
+        </select>
+        <div *ngIf="(orderCtrl.invalid) " class="invalid-feedback">
+             
+        </div>
+        <br/><br/>
+     </div>
+    <div class="col-sm-3" *ngIf="this.order !== undefined && this.orders === undefined" [class.has-error]="orderCtrl.invalid">
+         <select class="form-control" 
+                       #orderCtrl="ngModel" [ngClass]="{ 'is-invalid': (orderCtrl.touched && orderCtrl.invalid) || (imageinfo.submitted && orderCtrl.invalid) }"
+                       [(ngModel)] = "this.imageinfoDto.order" name="order"
+                       (ngChange) = "this.selectorder($event)">
+                 <option *ngFor="let colVal of this.order.values()" [ngValue] = "colVal">
+                     {{colVal}}
+                 </option>
+         </select>
+         <div *ngIf="(orderCtrl.invalid)" class="invalid-feedback">
+              
+         </div>
+         <br/><br/>
+     </div>
+  </div>
+
+ </fieldset>
+
+   <div class="row">
+     <div class="col-sm-4"></div>
+     <div class="col-sm-4">
+          <input type="submit" value="Save"/>
+     </div>
+     <div class="col-sm-4"></div>
+   </div>
+</form>

@@ -1,0 +1,68 @@
+<div>
+	<!-- Navigation -->
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark fixed-top"style="background-color: black;">
+	  <div class="container">
+		<a class="navbar-brand" href="index.html">{{title}}</a>
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+		  <ul class="navbar-nav ml-auto">
+			            <li class="nav-item">
+			  <a class="nav-link" href="/shops">Shop</a>
+			</li>
+            <li class="nav-item">
+			  <a class="nav-link" href="/clients">Client</a>
+			</li>
+            <li class="nav-item">
+			  <a class="nav-link" href="/imageinfos">Imageinfo</a>
+			</li>
+            <li class="nav-item">
+			  <a class="nav-link" href="/shopimageinfos">Shopimageinfo</a>
+			</li>
+            <li class="nav-item">
+			  <a class="nav-link" href="/orders">Order</a>
+			</li>
+            <li class="nav-item">
+			  <a class="nav-link" href="/contacts">Contact</a>
+			</li>
+            <li class="nav-item">
+			  <a class="nav-link" href="/users">User</a>
+			</li>
+            <li class="nav-item">
+			  <a class="nav-link" href="/addresss">Address</a>
+			</li>
+
+			<li class="nav-item dropdown">
+			  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Account
+			  </a>
+			  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+				<a class="dropdown-item" href="portfolio-1-col.html">Profile</a>
+				<a class="dropdown-item" href="portfolio-2-col.html">Change Password</a>
+				<a class="dropdown-item" (click)="logout()" href="#">Log Out</a>
+			  </div>
+			</li>
+		  </ul>
+		</div>
+	  </div>
+	</nav>
+
+	<header>
+
+	</header>
+
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8" style="padding: 3%; min-height: 500px; width: 100%;">
+                <router-outlet></router-outlet>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+
+      <footer class="py-5 bg-dark" style="width: 100%;">
+        <div class="container">
+          <p class="m-0 text-center text-white">Copyright &copy; PhotoPrinter © 2020</p>
+        </div>
+      </footer>
+</div>

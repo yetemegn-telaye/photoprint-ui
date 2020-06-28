@@ -1,0 +1,246 @@
+<div class="row">
+    <div class="col-sm-3"> <h3> Contact </h3></div>
+    <div class="col-sm-3"> </div>
+    <div class="col-sm-3"> </div>
+    <div class="col-sm-3">
+        <input type="button" [routerLink]="['/contacts-view']" value="View All"/>
+    </div>
+</div>
+
+<form #contact="ngForm" name="frmContact" (ngSubmit)="contact.form.valid && this.createContactClicked()">
+ <fieldset style="padding:3%; min-height: 250px;">
+  <div class="row form-group has-error" >
+      <div class="col-sm-2">
+      <label for="txtName" >phoneNumber: </label>
+    </div>
+    <div class="col-sm-3" *ngIf="this.phoneNumbers === undefined && this.phoneNumber === undefined" >
+       <div *ngIf="'string' === 'boolean'" [class.has-error]="phoneNumberCtrl.invalid">
+          <input id="chkphoneNumber"  required
+          class="form-control" #phoneNumberCtrl="ngModel" [ngClass]="{ 'is-invalid': (phoneNumberCtrl.touched && phoneNumberCtrl.invalid) || (contact.submitted && phoneNumberCtrl.invalid) }"
+          type="checkbox" name="phoneNumber" [(ngModel)]="this.contactDto.phoneNumber"/>
+            <div *ngIf="(phoneNumberCtrl.invalid) " class="invalid-feedback">
+                					<div *ngIf="phoneNumberCtrl.errors.required">phoneNumber is required. </div>
+
+            </div>
+            <br/><br/>
+       </div>
+       <div *ngIf="'string' !== 'boolean'" [class.has-error]="phoneNumberCtrl.invalid">
+          <input id="txtphoneNumber"  required
+          class="form-control" #phoneNumberCtrl="ngModel" [ngClass]="{ 'is-invalid': (phoneNumberCtrl.touched && phoneNumberCtrl.invalid) || (contact.submitted && phoneNumberCtrl.invalid) }"
+           name="phoneNumber" type="text" [(ngModel)]="this.contactDto.phoneNumber"/>
+            <div *ngIf="(phoneNumberCtrl.invalid) " class="invalid-feedback">
+                 					<div *ngIf="phoneNumberCtrl.errors.required">phoneNumber is required. </div>
+
+            </div>
+            <br/><br/>
+       </div>
+    </div>
+    <div class="col-sm-3" *ngIf="this.phoneNumbers !== undefined && this.phoneNumber === undefined" [class.has-error]="phoneNumberCtrl.invalid">
+        <select class="form-control"  required
+                      #phoneNumberCtrl="ngModel" [ngClass]="{ 'is-invalid': (phoneNumberCtrl.touched && phoneNumberCtrl.invalid) || (contact.submitted && phoneNumberCtrl.invalid) }"
+                       [(ngModel)] = "this.contactDto.phoneNumber"  name="phoneNumber"
+                       (ngChange) = "this.selectphoneNumber($event)">
+                <option *ngFor="let colVal of this.phoneNumbers" [ngValue] = "colVal">
+                    {{colVal.phoneNumberId}}
+                </option>
+        </select>
+        <div *ngIf="(phoneNumberCtrl.invalid) " class="invalid-feedback">
+             					<div *ngIf="phoneNumberCtrl.errors.required">phoneNumber is required. </div>
+
+        </div>
+        <br/><br/>
+     </div>
+    <div class="col-sm-3" *ngIf="this.phoneNumber !== undefined && this.phoneNumbers === undefined" [class.has-error]="phoneNumberCtrl.invalid">
+         <select class="form-control"  required
+                       #phoneNumberCtrl="ngModel" [ngClass]="{ 'is-invalid': (phoneNumberCtrl.touched && phoneNumberCtrl.invalid) || (contact.submitted && phoneNumberCtrl.invalid) }"
+                       [(ngModel)] = "this.contactDto.phoneNumber" name="phoneNumber"
+                       (ngChange) = "this.selectphoneNumber($event)">
+                 <option *ngFor="let colVal of this.phoneNumber.values()" [ngValue] = "colVal">
+                     {{colVal}}
+                 </option>
+         </select>
+         <div *ngIf="(phoneNumberCtrl.invalid)" class="invalid-feedback">
+              					<div *ngIf="phoneNumberCtrl.errors.required">phoneNumber is required. </div>
+
+         </div>
+         <br/><br/>
+     </div>
+  </div>
+<div class="row form-group has-error" >
+      <div class="col-sm-2">
+      <label for="txtName" >client: </label>
+    </div>
+    <div class="col-sm-3" *ngIf="this.clients === undefined && this.client === undefined" >
+       <div *ngIf="'any' === 'boolean'" [class.has-error]="clientCtrl.invalid">
+          <input id="chkclient" 
+          class="form-control" #clientCtrl="ngModel" [ngClass]="{ 'is-invalid': (clientCtrl.touched && clientCtrl.invalid) || (contact.submitted && clientCtrl.invalid) }"
+          type="checkbox" name="client" [(ngModel)]="this.contactDto.client"/>
+            <div *ngIf="(clientCtrl.invalid) " class="invalid-feedback">
+                
+            </div>
+            <br/><br/>
+       </div>
+       <div *ngIf="'any' !== 'boolean'" [class.has-error]="clientCtrl.invalid">
+          <input id="txtclient" 
+          class="form-control" #clientCtrl="ngModel" [ngClass]="{ 'is-invalid': (clientCtrl.touched && clientCtrl.invalid) || (contact.submitted && clientCtrl.invalid) }"
+           name="client" type="text" [(ngModel)]="this.contactDto.client"/>
+            <div *ngIf="(clientCtrl.invalid) " class="invalid-feedback">
+                 
+            </div>
+            <br/><br/>
+       </div>
+    </div>
+    <div class="col-sm-3" *ngIf="this.clients !== undefined && this.client === undefined" [class.has-error]="clientCtrl.invalid">
+        <select class="form-control" 
+                      #clientCtrl="ngModel" [ngClass]="{ 'is-invalid': (clientCtrl.touched && clientCtrl.invalid) || (contact.submitted && clientCtrl.invalid) }"
+                       [(ngModel)] = "this.contactDto.client"  name="client"
+                       (ngChange) = "this.selectclient($event)">
+                <option *ngFor="let colVal of this.clients" [ngValue] = "colVal">
+                    {{colVal.clientId}}
+                </option>
+        </select>
+        <div *ngIf="(clientCtrl.invalid) " class="invalid-feedback">
+             
+        </div>
+        <br/><br/>
+     </div>
+    <div class="col-sm-3" *ngIf="this.client !== undefined && this.clients === undefined" [class.has-error]="clientCtrl.invalid">
+         <select class="form-control" 
+                       #clientCtrl="ngModel" [ngClass]="{ 'is-invalid': (clientCtrl.touched && clientCtrl.invalid) || (contact.submitted && clientCtrl.invalid) }"
+                       [(ngModel)] = "this.contactDto.client" name="client"
+                       (ngChange) = "this.selectclient($event)">
+                 <option *ngFor="let colVal of this.client.values()" [ngValue] = "colVal">
+                     {{colVal}}
+                 </option>
+         </select>
+         <div *ngIf="(clientCtrl.invalid)" class="invalid-feedback">
+              
+         </div>
+         <br/><br/>
+     </div>
+  </div>
+<div class="row form-group has-error" >
+      <div class="col-sm-2">
+      <label for="txtName" >shop: </label>
+    </div>
+    <div class="col-sm-3" *ngIf="this.shops === undefined && this.shop === undefined" >
+       <div *ngIf="'any' === 'boolean'" [class.has-error]="shopCtrl.invalid">
+          <input id="chkshop" 
+          class="form-control" #shopCtrl="ngModel" [ngClass]="{ 'is-invalid': (shopCtrl.touched && shopCtrl.invalid) || (contact.submitted && shopCtrl.invalid) }"
+          type="checkbox" name="shop" [(ngModel)]="this.contactDto.shop"/>
+            <div *ngIf="(shopCtrl.invalid) " class="invalid-feedback">
+                
+            </div>
+            <br/><br/>
+       </div>
+       <div *ngIf="'any' !== 'boolean'" [class.has-error]="shopCtrl.invalid">
+          <input id="txtshop" 
+          class="form-control" #shopCtrl="ngModel" [ngClass]="{ 'is-invalid': (shopCtrl.touched && shopCtrl.invalid) || (contact.submitted && shopCtrl.invalid) }"
+           name="shop" type="text" [(ngModel)]="this.contactDto.shop"/>
+            <div *ngIf="(shopCtrl.invalid) " class="invalid-feedback">
+                 
+            </div>
+            <br/><br/>
+       </div>
+    </div>
+    <div class="col-sm-3" *ngIf="this.shops !== undefined && this.shop === undefined" [class.has-error]="shopCtrl.invalid">
+        <select class="form-control" 
+                      #shopCtrl="ngModel" [ngClass]="{ 'is-invalid': (shopCtrl.touched && shopCtrl.invalid) || (contact.submitted && shopCtrl.invalid) }"
+                       [(ngModel)] = "this.contactDto.shop"  name="shop"
+                       (ngChange) = "this.selectshop($event)">
+                <option *ngFor="let colVal of this.shops" [ngValue] = "colVal">
+                    {{colVal.shopId}}
+                </option>
+        </select>
+        <div *ngIf="(shopCtrl.invalid) " class="invalid-feedback">
+             
+        </div>
+        <br/><br/>
+     </div>
+    <div class="col-sm-3" *ngIf="this.shop !== undefined && this.shops === undefined" [class.has-error]="shopCtrl.invalid">
+         <select class="form-control" 
+                       #shopCtrl="ngModel" [ngClass]="{ 'is-invalid': (shopCtrl.touched && shopCtrl.invalid) || (contact.submitted && shopCtrl.invalid) }"
+                       [(ngModel)] = "this.contactDto.shop" name="shop"
+                       (ngChange) = "this.selectshop($event)">
+                 <option *ngFor="let colVal of this.shop.values()" [ngValue] = "colVal">
+                     {{colVal}}
+                 </option>
+         </select>
+         <div *ngIf="(shopCtrl.invalid)" class="invalid-feedback">
+              
+         </div>
+         <br/><br/>
+     </div>
+  </div>
+<div class="row form-group has-error" >
+      <div class="col-sm-2">
+      <label for="txtName" >emailAddress: </label>
+    </div>
+    <div class="col-sm-3" *ngIf="this.emailAddresss === undefined && this.emailAddress === undefined" >
+       <div *ngIf="'string' === 'boolean'" [class.has-error]="emailAddressCtrl.invalid">
+          <input id="chkemailAddress"  required email
+          class="form-control" #emailAddressCtrl="ngModel" [ngClass]="{ 'is-invalid': (emailAddressCtrl.touched && emailAddressCtrl.invalid) || (contact.submitted && emailAddressCtrl.invalid) }"
+          type="checkbox" name="emailAddress" [(ngModel)]="this.contactDto.emailAddress"/>
+            <div *ngIf="(emailAddressCtrl.invalid) " class="invalid-feedback">
+                					<div *ngIf="emailAddressCtrl.errors.required">emailAddress is required. </div>
+					<div *ngIf="emailAddressCtrl.errors.email">emailAddress is invalid email. </div>
+
+            </div>
+            <br/><br/>
+       </div>
+       <div *ngIf="'string' !== 'boolean'" [class.has-error]="emailAddressCtrl.invalid">
+          <input id="txtemailAddress"  required email
+          class="form-control" #emailAddressCtrl="ngModel" [ngClass]="{ 'is-invalid': (emailAddressCtrl.touched && emailAddressCtrl.invalid) || (contact.submitted && emailAddressCtrl.invalid) }"
+           name="emailAddress" type="email" [(ngModel)]="this.contactDto.emailAddress"/>
+            <div *ngIf="(emailAddressCtrl.invalid) " class="invalid-feedback">
+                 					<div *ngIf="emailAddressCtrl.errors.required">emailAddress is required. </div>
+					<div *ngIf="emailAddressCtrl.errors.email">emailAddress is invalid email. </div>
+
+            </div>
+            <br/><br/>
+       </div>
+    </div>
+    <div class="col-sm-3" *ngIf="this.emailAddresss !== undefined && this.emailAddress === undefined" [class.has-error]="emailAddressCtrl.invalid">
+        <select class="form-control"  required email
+                      #emailAddressCtrl="ngModel" [ngClass]="{ 'is-invalid': (emailAddressCtrl.touched && emailAddressCtrl.invalid) || (contact.submitted && emailAddressCtrl.invalid) }"
+                       [(ngModel)] = "this.contactDto.emailAddress"  name="emailAddress"
+                       (ngChange) = "this.selectemailAddress($event)">
+                <option *ngFor="let colVal of this.emailAddresss" [ngValue] = "colVal">
+                    {{colVal.emailAddressId}}
+                </option>
+        </select>
+        <div *ngIf="(emailAddressCtrl.invalid) " class="invalid-feedback">
+             					<div *ngIf="emailAddressCtrl.errors.required">emailAddress is required. </div>
+					<div *ngIf="emailAddressCtrl.errors.email">emailAddress is invalid email. </div>
+
+        </div>
+        <br/><br/>
+     </div>
+    <div class="col-sm-3" *ngIf="this.emailAddress !== undefined && this.emailAddresss === undefined" [class.has-error]="emailAddressCtrl.invalid">
+         <select class="form-control"  required email
+                       #emailAddressCtrl="ngModel" [ngClass]="{ 'is-invalid': (emailAddressCtrl.touched && emailAddressCtrl.invalid) || (contact.submitted && emailAddressCtrl.invalid) }"
+                       [(ngModel)] = "this.contactDto.emailAddress" name="emailAddress"
+                       (ngChange) = "this.selectemailAddress($event)">
+                 <option *ngFor="let colVal of this.emailAddress.values()" [ngValue] = "colVal">
+                     {{colVal}}
+                 </option>
+         </select>
+         <div *ngIf="(emailAddressCtrl.invalid)" class="invalid-feedback">
+              					<div *ngIf="emailAddressCtrl.errors.required">emailAddress is required. </div>
+					<div *ngIf="emailAddressCtrl.errors.email">emailAddress is invalid email. </div>
+
+         </div>
+         <br/><br/>
+     </div>
+  </div>
+
+ </fieldset>
+
+   <div class="row">
+     <div class="col-sm-4"></div>
+     <div class="col-sm-4">
+          <input type="submit" value="Save"/>
+     </div>
+     <div class="col-sm-4"></div>
+   </div>
+</form>

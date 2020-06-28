@@ -1,0 +1,96 @@
+<br/><br/>
+ <div class="row">
+   <div class="col-sm-3">
+        <input type="button" (click)="this.editClient()" value="Edit"/>
+   </div>
+   <div class="col-sm-3">
+        <input type="button" (click)="this.deleteClients()" value="Delete"/>
+   </div>
+   <div class="col-sm-3">
+
+   </div>
+   <div class="col-sm-3">
+       <input type="button" value="Add New" [routerLink]="['/clients']"/>
+   </div>
+
+ </div>
+
+
+
+
+<table class="blueTable">
+    <thead>
+        <tr>
+            <th>
+                <input [(ngModel)] = "this.selectAllValue" type="checkbox" (change) = "this.selectAll()"/>
+            </th>
+             <th *ngFor="let col of this.columns | slice:1">
+                 {{col}}
+             </th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+        <td colspan="7">
+            <div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
+        </td>
+        </tr>
+    </tfoot>
+    <tr *ngFor="let client of this.clients">
+        <td>
+            <input type="checkbox" [(ngModel)]="client.selected"/>
+        </td>
+                <td *ngIf="!this.isNotPrimitive(client.contact)">
+            <input id="chkcontact" *ngIf="this.isBoolean(client.contact)" type="checkbox" [(ngModel)]="client.contact"/>
+            <span *ngIf="!this.isBoolean(client.contact)">{{client.contact}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(client.contact)">
+             {{client.contact.contactId}}
+        </td>
+        <td *ngIf="!this.isNotPrimitive(client.lastName)">
+            <input id="chklastName" *ngIf="this.isBoolean(client.lastName)" type="checkbox" [(ngModel)]="client.lastName"/>
+            <span *ngIf="!this.isBoolean(client.lastName)">{{client.lastName}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(client.lastName)">
+             {{client.lastName.lastNameId}}
+        </td>
+        <td *ngIf="!this.isNotPrimitive(client.user)">
+            <input id="chkuser" *ngIf="this.isBoolean(client.user)" type="checkbox" [(ngModel)]="client.user"/>
+            <span *ngIf="!this.isBoolean(client.user)">{{client.user}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(client.user)">
+             {{client.user.userId}}
+        </td>
+        <td *ngIf="!this.isNotPrimitive(client.firstName)">
+            <input id="chkfirstName" *ngIf="this.isBoolean(client.firstName)" type="checkbox" [(ngModel)]="client.firstName"/>
+            <span *ngIf="!this.isBoolean(client.firstName)">{{client.firstName}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(client.firstName)">
+             {{client.firstName.firstNameId}}
+        </td>
+        <td *ngIf="!this.isNotPrimitive(client.middleName)">
+            <input id="chkmiddleName" *ngIf="this.isBoolean(client.middleName)" type="checkbox" [(ngModel)]="client.middleName"/>
+            <span *ngIf="!this.isBoolean(client.middleName)">{{client.middleName}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(client.middleName)">
+             {{client.middleName.middleNameId}}
+        </td>
+
+    </tr>
+</table>
+<!--
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-3">
+        <input type="button" (click)="this.editItem()" value="Edit"/>
+    </div>
+    <div class="col-sm-3">
+        <input type="button" value="Delete"/>
+    </div>
+     <div class="col-sm-3">
+        <input type="button" (click)="this.updateClientClicked()" value="Update"/>
+    </div> -->
+    <!-- <div class="col-sm-3">
+        <input type="button" (click)="this.deleteClientClicked()" value="Delete"/>
+    </div>
+</div> -->

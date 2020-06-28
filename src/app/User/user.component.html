@@ -1,0 +1,242 @@
+<div class="row">
+    <div class="col-sm-3"> <h3> User </h3></div>
+    <div class="col-sm-3"> </div>
+    <div class="col-sm-3"> </div>
+    <div class="col-sm-3">
+        <input type="button" [routerLink]="['/users-view']" value="View All"/>
+    </div>
+</div>
+
+<form #user="ngForm" name="frmUser" (ngSubmit)="user.form.valid && this.createUserClicked()">
+ <fieldset style="padding:3%; min-height: 250px;">
+  <div class="row form-group has-error" >
+      <div class="col-sm-2">
+      <label for="txtName" >client: </label>
+    </div>
+    <div class="col-sm-3" *ngIf="this.clients === undefined && this.client === undefined" >
+       <div *ngIf="'any' === 'boolean'" [class.has-error]="clientCtrl.invalid">
+          <input id="chkclient" 
+          class="form-control" #clientCtrl="ngModel" [ngClass]="{ 'is-invalid': (clientCtrl.touched && clientCtrl.invalid) || (user.submitted && clientCtrl.invalid) }"
+          type="checkbox" name="client" [(ngModel)]="this.userDto.client"/>
+            <div *ngIf="(clientCtrl.invalid) " class="invalid-feedback">
+                
+            </div>
+            <br/><br/>
+       </div>
+       <div *ngIf="'any' !== 'boolean'" [class.has-error]="clientCtrl.invalid">
+          <input id="txtclient" 
+          class="form-control" #clientCtrl="ngModel" [ngClass]="{ 'is-invalid': (clientCtrl.touched && clientCtrl.invalid) || (user.submitted && clientCtrl.invalid) }"
+           name="client" type="text" [(ngModel)]="this.userDto.client"/>
+            <div *ngIf="(clientCtrl.invalid) " class="invalid-feedback">
+                 
+            </div>
+            <br/><br/>
+       </div>
+    </div>
+    <div class="col-sm-3" *ngIf="this.clients !== undefined && this.client === undefined" [class.has-error]="clientCtrl.invalid">
+        <select class="form-control" 
+                      #clientCtrl="ngModel" [ngClass]="{ 'is-invalid': (clientCtrl.touched && clientCtrl.invalid) || (user.submitted && clientCtrl.invalid) }"
+                       [(ngModel)] = "this.userDto.client"  name="client"
+                       (ngChange) = "this.selectclient($event)">
+                <option *ngFor="let colVal of this.clients" [ngValue] = "colVal">
+                    {{colVal.clientId}}
+                </option>
+        </select>
+        <div *ngIf="(clientCtrl.invalid) " class="invalid-feedback">
+             
+        </div>
+        <br/><br/>
+     </div>
+    <div class="col-sm-3" *ngIf="this.client !== undefined && this.clients === undefined" [class.has-error]="clientCtrl.invalid">
+         <select class="form-control" 
+                       #clientCtrl="ngModel" [ngClass]="{ 'is-invalid': (clientCtrl.touched && clientCtrl.invalid) || (user.submitted && clientCtrl.invalid) }"
+                       [(ngModel)] = "this.userDto.client" name="client"
+                       (ngChange) = "this.selectclient($event)">
+                 <option *ngFor="let colVal of this.client.values()" [ngValue] = "colVal">
+                     {{colVal}}
+                 </option>
+         </select>
+         <div *ngIf="(clientCtrl.invalid)" class="invalid-feedback">
+              
+         </div>
+         <br/><br/>
+     </div>
+  </div>
+<div class="row form-group has-error" >
+      <div class="col-sm-2">
+      <label for="txtName" >userName: </label>
+    </div>
+    <div class="col-sm-3" *ngIf="this.userNames === undefined && this.userName === undefined" >
+       <div *ngIf="'string' === 'boolean'" [class.has-error]="userNameCtrl.invalid">
+          <input id="chkuserName"  required
+          class="form-control" #userNameCtrl="ngModel" [ngClass]="{ 'is-invalid': (userNameCtrl.touched && userNameCtrl.invalid) || (user.submitted && userNameCtrl.invalid) }"
+          type="checkbox" name="userName" [(ngModel)]="this.userDto.userName"/>
+            <div *ngIf="(userNameCtrl.invalid) " class="invalid-feedback">
+                					<div *ngIf="userNameCtrl.errors.required">userName is required. </div>
+
+            </div>
+            <br/><br/>
+       </div>
+       <div *ngIf="'string' !== 'boolean'" [class.has-error]="userNameCtrl.invalid">
+          <input id="txtuserName"  required
+          class="form-control" #userNameCtrl="ngModel" [ngClass]="{ 'is-invalid': (userNameCtrl.touched && userNameCtrl.invalid) || (user.submitted && userNameCtrl.invalid) }"
+           name="userName" type="text" [(ngModel)]="this.userDto.userName"/>
+            <div *ngIf="(userNameCtrl.invalid) " class="invalid-feedback">
+                 					<div *ngIf="userNameCtrl.errors.required">userName is required. </div>
+
+            </div>
+            <br/><br/>
+       </div>
+    </div>
+    <div class="col-sm-3" *ngIf="this.userNames !== undefined && this.userName === undefined" [class.has-error]="userNameCtrl.invalid">
+        <select class="form-control"  required
+                      #userNameCtrl="ngModel" [ngClass]="{ 'is-invalid': (userNameCtrl.touched && userNameCtrl.invalid) || (user.submitted && userNameCtrl.invalid) }"
+                       [(ngModel)] = "this.userDto.userName"  name="userName"
+                       (ngChange) = "this.selectuserName($event)">
+                <option *ngFor="let colVal of this.userNames" [ngValue] = "colVal">
+                    {{colVal.userNameId}}
+                </option>
+        </select>
+        <div *ngIf="(userNameCtrl.invalid) " class="invalid-feedback">
+             					<div *ngIf="userNameCtrl.errors.required">userName is required. </div>
+
+        </div>
+        <br/><br/>
+     </div>
+    <div class="col-sm-3" *ngIf="this.userName !== undefined && this.userNames === undefined" [class.has-error]="userNameCtrl.invalid">
+         <select class="form-control"  required
+                       #userNameCtrl="ngModel" [ngClass]="{ 'is-invalid': (userNameCtrl.touched && userNameCtrl.invalid) || (user.submitted && userNameCtrl.invalid) }"
+                       [(ngModel)] = "this.userDto.userName" name="userName"
+                       (ngChange) = "this.selectuserName($event)">
+                 <option *ngFor="let colVal of this.userName.values()" [ngValue] = "colVal">
+                     {{colVal}}
+                 </option>
+         </select>
+         <div *ngIf="(userNameCtrl.invalid)" class="invalid-feedback">
+              					<div *ngIf="userNameCtrl.errors.required">userName is required. </div>
+
+         </div>
+         <br/><br/>
+     </div>
+  </div>
+<div class="row form-group has-error" >
+      <div class="col-sm-2">
+      <label for="txtName" >role: </label>
+    </div>
+    <div class="col-sm-3" *ngIf="this.roles === undefined && this.role === undefined" >
+       <div *ngIf="'any' === 'boolean'" [class.has-error]="roleCtrl.invalid">
+          <input id="chkrole" 
+          class="form-control" #roleCtrl="ngModel" [ngClass]="{ 'is-invalid': (roleCtrl.touched && roleCtrl.invalid) || (user.submitted && roleCtrl.invalid) }"
+          type="checkbox" name="role" [(ngModel)]="this.userDto.role"/>
+            <div *ngIf="(roleCtrl.invalid) " class="invalid-feedback">
+                
+            </div>
+            <br/><br/>
+       </div>
+       <div *ngIf="'any' !== 'boolean'" [class.has-error]="roleCtrl.invalid">
+          <input id="txtrole" 
+          class="form-control" #roleCtrl="ngModel" [ngClass]="{ 'is-invalid': (roleCtrl.touched && roleCtrl.invalid) || (user.submitted && roleCtrl.invalid) }"
+           name="role" type="text" [(ngModel)]="this.userDto.role"/>
+            <div *ngIf="(roleCtrl.invalid) " class="invalid-feedback">
+                 
+            </div>
+            <br/><br/>
+       </div>
+    </div>
+    <div class="col-sm-3" *ngIf="this.roles !== undefined && this.role === undefined" [class.has-error]="roleCtrl.invalid">
+        <select class="form-control" 
+                      #roleCtrl="ngModel" [ngClass]="{ 'is-invalid': (roleCtrl.touched && roleCtrl.invalid) || (user.submitted && roleCtrl.invalid) }"
+                       [(ngModel)] = "this.userDto.role"  name="role"
+                       (ngChange) = "this.selectrole($event)">
+                <option *ngFor="let colVal of this.roles" [ngValue] = "colVal">
+                    {{colVal.roleId}}
+                </option>
+        </select>
+        <div *ngIf="(roleCtrl.invalid) " class="invalid-feedback">
+             
+        </div>
+        <br/><br/>
+     </div>
+    <div class="col-sm-3" *ngIf="this.role !== undefined && this.roles === undefined" [class.has-error]="roleCtrl.invalid">
+         <select class="form-control" 
+                       #roleCtrl="ngModel" [ngClass]="{ 'is-invalid': (roleCtrl.touched && roleCtrl.invalid) || (user.submitted && roleCtrl.invalid) }"
+                       [(ngModel)] = "this.userDto.role" name="role"
+                       (ngChange) = "this.selectrole($event)">
+                 <option *ngFor="let colVal of this.role.values()" [ngValue] = "colVal">
+                     {{colVal}}
+                 </option>
+         </select>
+         <div *ngIf="(roleCtrl.invalid)" class="invalid-feedback">
+              
+         </div>
+         <br/><br/>
+     </div>
+  </div>
+<div class="row form-group has-error" >
+      <div class="col-sm-2">
+      <label for="txtName" >password: </label>
+    </div>
+    <div class="col-sm-3" *ngIf="this.passwords === undefined && this.password === undefined" >
+       <div *ngIf="'string' === 'boolean'" [class.has-error]="passwordCtrl.invalid">
+          <input id="chkpassword"  required
+          class="form-control" #passwordCtrl="ngModel" [ngClass]="{ 'is-invalid': (passwordCtrl.touched && passwordCtrl.invalid) || (user.submitted && passwordCtrl.invalid) }"
+          type="checkbox" name="password" [(ngModel)]="this.userDto.password"/>
+            <div *ngIf="(passwordCtrl.invalid) " class="invalid-feedback">
+                					<div *ngIf="passwordCtrl.errors.required">password is required. </div>
+
+            </div>
+            <br/><br/>
+       </div>
+       <div *ngIf="'string' !== 'boolean'" [class.has-error]="passwordCtrl.invalid">
+          <input id="txtpassword"  required
+          class="form-control" #passwordCtrl="ngModel" [ngClass]="{ 'is-invalid': (passwordCtrl.touched && passwordCtrl.invalid) || (user.submitted && passwordCtrl.invalid) }"
+           name="password" type="password" [(ngModel)]="this.userDto.password"/>
+            <div *ngIf="(passwordCtrl.invalid) " class="invalid-feedback">
+                 					<div *ngIf="passwordCtrl.errors.required">password is required. </div>
+
+            </div>
+            <br/><br/>
+       </div>
+    </div>
+    <div class="col-sm-3" *ngIf="this.passwords !== undefined && this.password === undefined" [class.has-error]="passwordCtrl.invalid">
+        <select class="form-control"  required
+                      #passwordCtrl="ngModel" [ngClass]="{ 'is-invalid': (passwordCtrl.touched && passwordCtrl.invalid) || (user.submitted && passwordCtrl.invalid) }"
+                       [(ngModel)] = "this.userDto.password"  name="password"
+                       (ngChange) = "this.selectpassword($event)">
+                <option *ngFor="let colVal of this.passwords" [ngValue] = "colVal">
+                    {{colVal.passwordId}}
+                </option>
+        </select>
+        <div *ngIf="(passwordCtrl.invalid) " class="invalid-feedback">
+             					<div *ngIf="passwordCtrl.errors.required">password is required. </div>
+
+        </div>
+        <br/><br/>
+     </div>
+    <div class="col-sm-3" *ngIf="this.password !== undefined && this.passwords === undefined" [class.has-error]="passwordCtrl.invalid">
+         <select class="form-control"  required
+                       #passwordCtrl="ngModel" [ngClass]="{ 'is-invalid': (passwordCtrl.touched && passwordCtrl.invalid) || (user.submitted && passwordCtrl.invalid) }"
+                       [(ngModel)] = "this.userDto.password" name="password"
+                       (ngChange) = "this.selectpassword($event)">
+                 <option *ngFor="let colVal of this.password.values()" [ngValue] = "colVal">
+                     {{colVal}}
+                 </option>
+         </select>
+         <div *ngIf="(passwordCtrl.invalid)" class="invalid-feedback">
+              					<div *ngIf="passwordCtrl.errors.required">password is required. </div>
+
+         </div>
+         <br/><br/>
+     </div>
+  </div>
+
+ </fieldset>
+
+   <div class="row">
+     <div class="col-sm-4"></div>
+     <div class="col-sm-4">
+          <input type="submit" value="Save"/>
+     </div>
+     <div class="col-sm-4"></div>
+   </div>
+</form>

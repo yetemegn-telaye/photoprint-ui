@@ -1,0 +1,344 @@
+<div class="row">
+    <div class="col-sm-3"> <h3> Shop </h3></div>
+    <div class="col-sm-3"> </div>
+    <div class="col-sm-3"> </div>
+    <div class="col-sm-3">
+        <input type="button" [routerLink]="['/shops-view']" value="View All"/>
+    </div>
+</div>
+
+<form #shop="ngForm" name="frmShop" (ngSubmit)="shop.form.valid && this.createShopClicked()">
+ <fieldset style="padding:3%; min-height: 250px;">
+  <div class="row form-group has-error" >
+      <div class="col-sm-2">
+      <label for="txtName" >workingDays: </label>
+    </div>
+    <div class="col-sm-3" *ngIf="this.workingDayss === undefined && this.workingDays === undefined" >
+       <div *ngIf="'string' === 'boolean'" [class.has-error]="workingDaysCtrl.invalid">
+          <input id="chkworkingDays" 
+          class="form-control" #workingDaysCtrl="ngModel" [ngClass]="{ 'is-invalid': (workingDaysCtrl.touched && workingDaysCtrl.invalid) || (shop.submitted && workingDaysCtrl.invalid) }"
+          type="checkbox" name="workingDays" [(ngModel)]="this.shopDto.workingDays"/>
+            <div *ngIf="(workingDaysCtrl.invalid) " class="invalid-feedback">
+                
+            </div>
+            <br/><br/>
+       </div>
+       <div *ngIf="'string' !== 'boolean'" [class.has-error]="workingDaysCtrl.invalid">
+          <input id="txtworkingDays" 
+          class="form-control" #workingDaysCtrl="ngModel" [ngClass]="{ 'is-invalid': (workingDaysCtrl.touched && workingDaysCtrl.invalid) || (shop.submitted && workingDaysCtrl.invalid) }"
+           name="workingDays" type="text" [(ngModel)]="this.shopDto.workingDays"/>
+            <div *ngIf="(workingDaysCtrl.invalid) " class="invalid-feedback">
+                 
+            </div>
+            <br/><br/>
+       </div>
+    </div>
+    <div class="col-sm-3" *ngIf="this.workingDayss !== undefined && this.workingDays === undefined" [class.has-error]="workingDaysCtrl.invalid">
+        <select class="form-control" 
+                      #workingDaysCtrl="ngModel" [ngClass]="{ 'is-invalid': (workingDaysCtrl.touched && workingDaysCtrl.invalid) || (shop.submitted && workingDaysCtrl.invalid) }"
+                       [(ngModel)] = "this.shopDto.workingDays"  name="workingDays"
+                       (ngChange) = "this.selectworkingDays($event)">
+                <option *ngFor="let colVal of this.workingDayss" [ngValue] = "colVal">
+                    {{colVal.workingDaysId}}
+                </option>
+        </select>
+        <div *ngIf="(workingDaysCtrl.invalid) " class="invalid-feedback">
+             
+        </div>
+        <br/><br/>
+     </div>
+    <div class="col-sm-3" *ngIf="this.workingDays !== undefined && this.workingDayss === undefined" [class.has-error]="workingDaysCtrl.invalid">
+         <select class="form-control" 
+                       #workingDaysCtrl="ngModel" [ngClass]="{ 'is-invalid': (workingDaysCtrl.touched && workingDaysCtrl.invalid) || (shop.submitted && workingDaysCtrl.invalid) }"
+                       [(ngModel)] = "this.shopDto.workingDays" name="workingDays"
+                       (ngChange) = "this.selectworkingDays($event)">
+                 <option *ngFor="let colVal of this.workingDays.values()" [ngValue] = "colVal">
+                     {{colVal}}
+                 </option>
+         </select>
+         <div *ngIf="(workingDaysCtrl.invalid)" class="invalid-feedback">
+              
+         </div>
+         <br/><br/>
+     </div>
+  </div>
+<div class="row form-group has-error" >
+      <div class="col-sm-2">
+      <label for="txtName" >name: </label>
+    </div>
+    <div class="col-sm-3" *ngIf="this.names === undefined && this.name === undefined" >
+       <div *ngIf="'string' === 'boolean'" [class.has-error]="nameCtrl.invalid">
+          <input id="chkname"  required
+          class="form-control" #nameCtrl="ngModel" [ngClass]="{ 'is-invalid': (nameCtrl.touched && nameCtrl.invalid) || (shop.submitted && nameCtrl.invalid) }"
+          type="checkbox" name="name" [(ngModel)]="this.shopDto.name"/>
+            <div *ngIf="(nameCtrl.invalid) " class="invalid-feedback">
+                					<div *ngIf="nameCtrl.errors.required">name is required. </div>
+
+            </div>
+            <br/><br/>
+       </div>
+       <div *ngIf="'string' !== 'boolean'" [class.has-error]="nameCtrl.invalid">
+          <input id="txtname"  required
+          class="form-control" #nameCtrl="ngModel" [ngClass]="{ 'is-invalid': (nameCtrl.touched && nameCtrl.invalid) || (shop.submitted && nameCtrl.invalid) }"
+           name="name" type="text" [(ngModel)]="this.shopDto.name"/>
+            <div *ngIf="(nameCtrl.invalid) " class="invalid-feedback">
+                 					<div *ngIf="nameCtrl.errors.required">name is required. </div>
+
+            </div>
+            <br/><br/>
+       </div>
+    </div>
+    <div class="col-sm-3" *ngIf="this.names !== undefined && this.name === undefined" [class.has-error]="nameCtrl.invalid">
+        <select class="form-control"  required
+                      #nameCtrl="ngModel" [ngClass]="{ 'is-invalid': (nameCtrl.touched && nameCtrl.invalid) || (shop.submitted && nameCtrl.invalid) }"
+                       [(ngModel)] = "this.shopDto.name"  name="name"
+                       (ngChange) = "this.selectname($event)">
+                <option *ngFor="let colVal of this.names" [ngValue] = "colVal">
+                    {{colVal.nameId}}
+                </option>
+        </select>
+        <div *ngIf="(nameCtrl.invalid) " class="invalid-feedback">
+             					<div *ngIf="nameCtrl.errors.required">name is required. </div>
+
+        </div>
+        <br/><br/>
+     </div>
+    <div class="col-sm-3" *ngIf="this.name !== undefined && this.names === undefined" [class.has-error]="nameCtrl.invalid">
+         <select class="form-control"  required
+                       #nameCtrl="ngModel" [ngClass]="{ 'is-invalid': (nameCtrl.touched && nameCtrl.invalid) || (shop.submitted && nameCtrl.invalid) }"
+                       [(ngModel)] = "this.shopDto.name" name="name"
+                       (ngChange) = "this.selectname($event)">
+                 <option *ngFor="let colVal of this.name.values()" [ngValue] = "colVal">
+                     {{colVal}}
+                 </option>
+         </select>
+         <div *ngIf="(nameCtrl.invalid)" class="invalid-feedback">
+              					<div *ngIf="nameCtrl.errors.required">name is required. </div>
+
+         </div>
+         <br/><br/>
+     </div>
+  </div>
+<div class="row form-group has-error" >
+      <div class="col-sm-2">
+      <label for="txtName" >workingHrStart: </label>
+    </div>
+    <div class="col-sm-3" *ngIf="this.workingHrStarts === undefined && this.workingHrStart === undefined" >
+       <div *ngIf="'any' === 'boolean'" [class.has-error]="workingHrStartCtrl.invalid">
+          <input id="chkworkingHrStart" 
+          class="form-control" #workingHrStartCtrl="ngModel" [ngClass]="{ 'is-invalid': (workingHrStartCtrl.touched && workingHrStartCtrl.invalid) || (shop.submitted && workingHrStartCtrl.invalid) }"
+          type="checkbox" name="workingHrStart" [(ngModel)]="this.shopDto.workingHrStart"/>
+            <div *ngIf="(workingHrStartCtrl.invalid) " class="invalid-feedback">
+                
+            </div>
+            <br/><br/>
+       </div>
+       <div *ngIf="'any' !== 'boolean'" [class.has-error]="workingHrStartCtrl.invalid">
+          <input id="txtworkingHrStart" 
+          class="form-control" #workingHrStartCtrl="ngModel" [ngClass]="{ 'is-invalid': (workingHrStartCtrl.touched && workingHrStartCtrl.invalid) || (shop.submitted && workingHrStartCtrl.invalid) }"
+           name="workingHrStart" type="text" [(ngModel)]="this.shopDto.workingHrStart"/>
+            <div *ngIf="(workingHrStartCtrl.invalid) " class="invalid-feedback">
+                 
+            </div>
+            <br/><br/>
+       </div>
+    </div>
+    <div class="col-sm-3" *ngIf="this.workingHrStarts !== undefined && this.workingHrStart === undefined" [class.has-error]="workingHrStartCtrl.invalid">
+        <select class="form-control" 
+                      #workingHrStartCtrl="ngModel" [ngClass]="{ 'is-invalid': (workingHrStartCtrl.touched && workingHrStartCtrl.invalid) || (shop.submitted && workingHrStartCtrl.invalid) }"
+                       [(ngModel)] = "this.shopDto.workingHrStart"  name="workingHrStart"
+                       (ngChange) = "this.selectworkingHrStart($event)">
+                <option *ngFor="let colVal of this.workingHrStarts" [ngValue] = "colVal">
+                    {{colVal.workingHrStartId}}
+                </option>
+        </select>
+        <div *ngIf="(workingHrStartCtrl.invalid) " class="invalid-feedback">
+             
+        </div>
+        <br/><br/>
+     </div>
+    <div class="col-sm-3" *ngIf="this.workingHrStart !== undefined && this.workingHrStarts === undefined" [class.has-error]="workingHrStartCtrl.invalid">
+         <select class="form-control" 
+                       #workingHrStartCtrl="ngModel" [ngClass]="{ 'is-invalid': (workingHrStartCtrl.touched && workingHrStartCtrl.invalid) || (shop.submitted && workingHrStartCtrl.invalid) }"
+                       [(ngModel)] = "this.shopDto.workingHrStart" name="workingHrStart"
+                       (ngChange) = "this.selectworkingHrStart($event)">
+                 <option *ngFor="let colVal of this.workingHrStart.values()" [ngValue] = "colVal">
+                     {{colVal}}
+                 </option>
+         </select>
+         <div *ngIf="(workingHrStartCtrl.invalid)" class="invalid-feedback">
+              
+         </div>
+         <br/><br/>
+     </div>
+  </div>
+<div class="row form-group has-error" >
+      <div class="col-sm-2">
+      <label for="txtName" >deliveryOpt: </label>
+    </div>
+    <div class="col-sm-3" *ngIf="this.deliveryOpts === undefined && this.deliveryOpt === undefined" >
+       <div *ngIf="'any' === 'boolean'" [class.has-error]="deliveryOptCtrl.invalid">
+          <input id="chkdeliveryOpt" 
+          class="form-control" #deliveryOptCtrl="ngModel" [ngClass]="{ 'is-invalid': (deliveryOptCtrl.touched && deliveryOptCtrl.invalid) || (shop.submitted && deliveryOptCtrl.invalid) }"
+          type="checkbox" name="deliveryOpt" [(ngModel)]="this.shopDto.deliveryOpt"/>
+            <div *ngIf="(deliveryOptCtrl.invalid) " class="invalid-feedback">
+                
+            </div>
+            <br/><br/>
+       </div>
+       <div *ngIf="'any' !== 'boolean'" [class.has-error]="deliveryOptCtrl.invalid">
+          <input id="txtdeliveryOpt" 
+          class="form-control" #deliveryOptCtrl="ngModel" [ngClass]="{ 'is-invalid': (deliveryOptCtrl.touched && deliveryOptCtrl.invalid) || (shop.submitted && deliveryOptCtrl.invalid) }"
+           name="deliveryOpt" type="text" [(ngModel)]="this.shopDto.deliveryOpt"/>
+            <div *ngIf="(deliveryOptCtrl.invalid) " class="invalid-feedback">
+                 
+            </div>
+            <br/><br/>
+       </div>
+    </div>
+    <div class="col-sm-3" *ngIf="this.deliveryOpts !== undefined && this.deliveryOpt === undefined" [class.has-error]="deliveryOptCtrl.invalid">
+        <select class="form-control" 
+                      #deliveryOptCtrl="ngModel" [ngClass]="{ 'is-invalid': (deliveryOptCtrl.touched && deliveryOptCtrl.invalid) || (shop.submitted && deliveryOptCtrl.invalid) }"
+                       [(ngModel)] = "this.shopDto.deliveryOpt"  name="deliveryOpt"
+                       (ngChange) = "this.selectdeliveryOpt($event)">
+                <option *ngFor="let colVal of this.deliveryOpts" [ngValue] = "colVal">
+                    {{colVal.deliveryOptId}}
+                </option>
+        </select>
+        <div *ngIf="(deliveryOptCtrl.invalid) " class="invalid-feedback">
+             
+        </div>
+        <br/><br/>
+     </div>
+    <div class="col-sm-3" *ngIf="this.deliveryOpt !== undefined && this.deliveryOpts === undefined" [class.has-error]="deliveryOptCtrl.invalid">
+         <select class="form-control" 
+                       #deliveryOptCtrl="ngModel" [ngClass]="{ 'is-invalid': (deliveryOptCtrl.touched && deliveryOptCtrl.invalid) || (shop.submitted && deliveryOptCtrl.invalid) }"
+                       [(ngModel)] = "this.shopDto.deliveryOpt" name="deliveryOpt"
+                       (ngChange) = "this.selectdeliveryOpt($event)">
+                 <option *ngFor="let colVal of this.deliveryOpt.values()" [ngValue] = "colVal">
+                     {{colVal}}
+                 </option>
+         </select>
+         <div *ngIf="(deliveryOptCtrl.invalid)" class="invalid-feedback">
+              
+         </div>
+         <br/><br/>
+     </div>
+  </div>
+<div class="row form-group has-error" >
+      <div class="col-sm-2">
+      <label for="txtName" >contact: </label>
+    </div>
+    <div class="col-sm-3" *ngIf="this.contacts === undefined && this.contact === undefined" >
+       <div *ngIf="'any' === 'boolean'" [class.has-error]="contactCtrl.invalid">
+          <input id="chkcontact" 
+          class="form-control" #contactCtrl="ngModel" [ngClass]="{ 'is-invalid': (contactCtrl.touched && contactCtrl.invalid) || (shop.submitted && contactCtrl.invalid) }"
+          type="checkbox" name="contact" [(ngModel)]="this.shopDto.contact"/>
+            <div *ngIf="(contactCtrl.invalid) " class="invalid-feedback">
+                
+            </div>
+            <br/><br/>
+       </div>
+       <div *ngIf="'any' !== 'boolean'" [class.has-error]="contactCtrl.invalid">
+          <input id="txtcontact" 
+          class="form-control" #contactCtrl="ngModel" [ngClass]="{ 'is-invalid': (contactCtrl.touched && contactCtrl.invalid) || (shop.submitted && contactCtrl.invalid) }"
+           name="contact" type="text" [(ngModel)]="this.shopDto.contact"/>
+            <div *ngIf="(contactCtrl.invalid) " class="invalid-feedback">
+                 
+            </div>
+            <br/><br/>
+       </div>
+    </div>
+    <div class="col-sm-3" *ngIf="this.contacts !== undefined && this.contact === undefined" [class.has-error]="contactCtrl.invalid">
+        <select class="form-control" 
+                      #contactCtrl="ngModel" [ngClass]="{ 'is-invalid': (contactCtrl.touched && contactCtrl.invalid) || (shop.submitted && contactCtrl.invalid) }"
+                       [(ngModel)] = "this.shopDto.contact"  name="contact"
+                       (ngChange) = "this.selectcontact($event)">
+                <option *ngFor="let colVal of this.contacts" [ngValue] = "colVal">
+                    {{colVal.contactId}}
+                </option>
+        </select>
+        <div *ngIf="(contactCtrl.invalid) " class="invalid-feedback">
+             
+        </div>
+        <br/><br/>
+     </div>
+    <div class="col-sm-3" *ngIf="this.contact !== undefined && this.contacts === undefined" [class.has-error]="contactCtrl.invalid">
+         <select class="form-control" 
+                       #contactCtrl="ngModel" [ngClass]="{ 'is-invalid': (contactCtrl.touched && contactCtrl.invalid) || (shop.submitted && contactCtrl.invalid) }"
+                       [(ngModel)] = "this.shopDto.contact" name="contact"
+                       (ngChange) = "this.selectcontact($event)">
+                 <option *ngFor="let colVal of this.contact.values()" [ngValue] = "colVal">
+                     {{colVal}}
+                 </option>
+         </select>
+         <div *ngIf="(contactCtrl.invalid)" class="invalid-feedback">
+              
+         </div>
+         <br/><br/>
+     </div>
+  </div>
+<div class="row form-group has-error" >
+      <div class="col-sm-2">
+      <label for="txtName" >workingHrEnd: </label>
+    </div>
+    <div class="col-sm-3" *ngIf="this.workingHrEnds === undefined && this.workingHrEnd === undefined" >
+       <div *ngIf="'any' === 'boolean'" [class.has-error]="workingHrEndCtrl.invalid">
+          <input id="chkworkingHrEnd" 
+          class="form-control" #workingHrEndCtrl="ngModel" [ngClass]="{ 'is-invalid': (workingHrEndCtrl.touched && workingHrEndCtrl.invalid) || (shop.submitted && workingHrEndCtrl.invalid) }"
+          type="checkbox" name="workingHrEnd" [(ngModel)]="this.shopDto.workingHrEnd"/>
+            <div *ngIf="(workingHrEndCtrl.invalid) " class="invalid-feedback">
+                
+            </div>
+            <br/><br/>
+       </div>
+       <div *ngIf="'any' !== 'boolean'" [class.has-error]="workingHrEndCtrl.invalid">
+          <input id="txtworkingHrEnd" 
+          class="form-control" #workingHrEndCtrl="ngModel" [ngClass]="{ 'is-invalid': (workingHrEndCtrl.touched && workingHrEndCtrl.invalid) || (shop.submitted && workingHrEndCtrl.invalid) }"
+           name="workingHrEnd" type="text" [(ngModel)]="this.shopDto.workingHrEnd"/>
+            <div *ngIf="(workingHrEndCtrl.invalid) " class="invalid-feedback">
+                 
+            </div>
+            <br/><br/>
+       </div>
+    </div>
+    <div class="col-sm-3" *ngIf="this.workingHrEnds !== undefined && this.workingHrEnd === undefined" [class.has-error]="workingHrEndCtrl.invalid">
+        <select class="form-control" 
+                      #workingHrEndCtrl="ngModel" [ngClass]="{ 'is-invalid': (workingHrEndCtrl.touched && workingHrEndCtrl.invalid) || (shop.submitted && workingHrEndCtrl.invalid) }"
+                       [(ngModel)] = "this.shopDto.workingHrEnd"  name="workingHrEnd"
+                       (ngChange) = "this.selectworkingHrEnd($event)">
+                <option *ngFor="let colVal of this.workingHrEnds" [ngValue] = "colVal">
+                    {{colVal.workingHrEndId}}
+                </option>
+        </select>
+        <div *ngIf="(workingHrEndCtrl.invalid) " class="invalid-feedback">
+             
+        </div>
+        <br/><br/>
+     </div>
+    <div class="col-sm-3" *ngIf="this.workingHrEnd !== undefined && this.workingHrEnds === undefined" [class.has-error]="workingHrEndCtrl.invalid">
+         <select class="form-control" 
+                       #workingHrEndCtrl="ngModel" [ngClass]="{ 'is-invalid': (workingHrEndCtrl.touched && workingHrEndCtrl.invalid) || (shop.submitted && workingHrEndCtrl.invalid) }"
+                       [(ngModel)] = "this.shopDto.workingHrEnd" name="workingHrEnd"
+                       (ngChange) = "this.selectworkingHrEnd($event)">
+                 <option *ngFor="let colVal of this.workingHrEnd.values()" [ngValue] = "colVal">
+                     {{colVal}}
+                 </option>
+         </select>
+         <div *ngIf="(workingHrEndCtrl.invalid)" class="invalid-feedback">
+              
+         </div>
+         <br/><br/>
+     </div>
+  </div>
+
+ </fieldset>
+
+   <div class="row">
+     <div class="col-sm-4"></div>
+     <div class="col-sm-4">
+          <input type="submit" value="Save"/>
+     </div>
+     <div class="col-sm-4"></div>
+   </div>
+</form>

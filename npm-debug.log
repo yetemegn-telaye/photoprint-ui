@@ -1,0 +1,30 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\BEL\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'start' ]
+2 info using npm@3.10.9
+3 info using node@v10.15.1
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info lifecycle my-app-ui@0.0.0~prestart: my-app-ui@0.0.0
+6 silly lifecycle my-app-ui@0.0.0~prestart: no script for prestart, continuing
+7 info lifecycle my-app-ui@0.0.0~start: my-app-ui@0.0.0
+8 verbose lifecycle my-app-ui@0.0.0~start: unsafe-perm in lifecycle true
+9 verbose lifecycle my-app-ui@0.0.0~start: PATH: C:\Users\BEL\AppData\Roaming\npm\node_modules\npm\bin\node-gyp-bin;C:\MOP\FE\my-app-ui-admin\node_modules\.bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio\;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn\;C:\apache-maven-3.3.9-bin\apache-maven-3.3.9\bin;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\TortoiseGit\bin;C:\Users\BEL\Desktop\Compiler Lab 1\apache-ant-1.9.7-bin\apache-ant-1.9.7\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\nodejs\;C:\Users\BEL\AppData\Local\atom\bin;C:\Program Files\Git\bin;C:\Users\BEL\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\BEL\AppData\Roaming\npm
+10 verbose lifecycle my-app-ui@0.0.0~start: CWD: C:\MOP\FE\my-app-ui-admin
+11 silly lifecycle my-app-ui@0.0.0~start: Args: [ '/d /s /c', 'ng serve' ]
+12 verbose stack Error: kill ENOSYS
+12 verbose stack     at process.kill (internal/process/per_thread.js:198:13)
+12 verbose stack     at process.listener (C:\Users\BEL\AppData\Roaming\npm\node_modules\npm\node_modules\npmlog\node_modules\gauge\node_modules\signal-exit\index.js:86:15)
+12 verbose stack     at process.emit (events.js:194:15)
+13 verbose cwd C:\MOP\FE\my-app-ui-admin
+14 error Windows_NT 6.3.9600
+15 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\BEL\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "start"
+16 error node v10.15.1
+17 error npm  v3.10.9
+18 error code ENOSYS
+19 error errno ENOSYS
+20 error syscall kill
+21 error kill ENOSYS
+22 error If you need help, you may report this error at:
+22 error     <https://github.com/npm/npm/issues>
+23 verbose exit [ 1, true ]
