@@ -16,9 +16,9 @@ This README would normally document whatever steps are necessary to get your app
 * Open in VSCode or other UI developement tools
 * Download Dependencies by running npm install
 * Start by running npm start
-* Setup WS repo ang get it up and running
+* Setup WS repo and get it up and running
 * Open browser and type http://localhost:4200/
-* Navigate to Menus on top bar and start testing
+* Navigate Menu on top bar and start testing
 
 ### Contribution guidelines ###
 
