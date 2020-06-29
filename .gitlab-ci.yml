@@ -1,0 +1,24 @@
+image: openjdk:11-stretch
+
+stages:
+  - dependency
+  - start
+
+before_script:
+  - echo "***************** Start CI/CD *************"
+
+dependency:
+  stage: dependency
+  script:
+    - ./npm install
+  only:
+    - master
+
+start:
+  stage: start
+  script:
+    - ./npm start
+.
+
+after_script:
+  - echo "************* End CI/CD *****************"
