@@ -20,3 +20,6 @@ dependency:
   script:
     - npm install
 
+start:
+  script:
+    - npm start
