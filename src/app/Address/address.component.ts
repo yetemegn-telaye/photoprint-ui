@@ -4,7 +4,6 @@ import {GenericServices} from './../GenericServices';
 import {AddressService} from './address.service';
 import {AddressDto} from './AddressDto';
 import { ClientService } from "../Client/client.service";
-import { ClientService } from "../Client/client.service";
 
 
 
@@ -25,12 +24,9 @@ export class AddressComponent {
     address: Object;
     saveOrUpdate : String = "Save";
     clients: Array<Object>;
-clients: Array<Object>;
-
     
 
     constructor(private router: Router, private addressDto: AddressDto, private addressService: AddressService, private genericServices: GenericServices , private clientService: ClientService
-, private clientService: ClientService
 ) {
           if(AddressService.selectedAddress != undefined || AddressService.selectedAddress != null){
             this.addressDto = AddressService.selectedAddress;
@@ -95,23 +91,6 @@ this.getAllClients();
     }
 
     getAllClients() {
-      this.clientService.getAllClients().subscribe(
-        result => {
-          if(result != null) {
-            this.clients = result;
-            console.log("All Clients : " + JSON.stringify(result));
-          }
-        },
-        error => console.log(error)
-      )
-    }
-
-    selectclient(client) {
-      console.log("Selected Client: " + JSON.stringify(client));
-      this.addressDto.client = client;
-      console.log(JSON.stringify(this.addressDto));
-    }
-getAllClients() {
       this.clientService.getAllClients().subscribe(
         result => {
           if(result != null) {
