@@ -20,6 +20,6 @@ dependency:
   script:
     - npm install
 
-start:
+build:
   script:
-    - npm start
+    - npm run-script build
