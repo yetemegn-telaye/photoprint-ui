@@ -13,9 +13,9 @@ image: node:latest
 # This folder is cached between builds
 # http://docs.gitlab.com/ce/ci/yaml/README.html#cache
 
-stages:
-  - dependency
-  - build
+# stages:
+#   - dependency
+#   - build
 
 before_script:
   - echo "***************** Start CI/CD *************"
@@ -31,7 +31,7 @@ dependency:
 
 build:
   script:
-    - npm run-script build
+    - npm publish
 
 after_script:
   - echo "************* End CI/CD *****************"
