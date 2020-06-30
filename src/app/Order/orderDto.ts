@@ -1,9 +1,11 @@
 export class OrderDto {
     selected : boolean;
     orderId : string;
-    	status : any;
-	imageInfos : Set<any>;
-	date : Date;
+    	imageInfos : Set<any>;
+	shop : any;
+	orderDate : Date;
+	orderStatus : any;
+	client : any;
 
 
     toString() {

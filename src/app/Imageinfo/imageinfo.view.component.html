@@ -61,13 +61,6 @@
         <td *ngIf="this.isNotPrimitive(imageinfo.count)">
              {{imageinfo.count.countId}}
         </td>
-        <td *ngIf="!this.isNotPrimitive(imageinfo.order)">
-            <input id="chkorder" *ngIf="this.isBoolean(imageinfo.order)" type="checkbox" [(ngModel)]="imageinfo.order"/>
-            <span *ngIf="!this.isBoolean(imageinfo.order)">{{imageinfo.order}}</span>
-        </td>
-        <td *ngIf="this.isNotPrimitive(imageinfo.order)">
-             {{imageinfo.order.orderId}}
-        </td>
 
     </tr>
 </table>

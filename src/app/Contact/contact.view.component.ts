@@ -20,10 +20,10 @@ export class ContactViewComponent{
     selectAllValue: boolean = false;
 
     constructor(private router: Router, private contactDto: ContactDto, private contactService: ContactService, private confirmationDialogService:  ConfirmationDialogService, private messageDialogService: MessageDialogService, private genericServices: GenericServices) {
-        this.columns = ["" ,"phoneNumber"
-,"client"
-,"shop"
+        this.columns = ["" ,"client"
 ,"emailAddress"
+,"phoneNumber"
+,"shop"
 ];
         this.getAllContactsClicked();
     }

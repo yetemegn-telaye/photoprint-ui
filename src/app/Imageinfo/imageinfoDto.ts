@@ -1,10 +1,11 @@
 export class ImageinfoDto {
     selected : boolean;
     imageinfoId : string;
-    	imageSize : any;
+    	client : any;
+	imageSize : any;
+	order : any;
 	image : string;
 	count : number;
-	order : any;
 
 
     toString() {

@@ -1,9 +1,9 @@
 export class ShopimageinfoDto {
     selected : boolean;
     shopimageinfoId : string;
-    	imagePrice : any;
-	imageSize : any;
+    	imageSize : any;
 	shop : any;
+	imagePrice : any;
 
 
     toString() {

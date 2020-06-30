@@ -180,59 +180,6 @@
          <br/><br/>
      </div>
   </div>
-<div class="row form-group has-error" >
-      <div class="col-sm-2">
-      <label for="txtName" >order: </label>
-    </div>
-    <div class="col-sm-3" *ngIf="this.orders === undefined && this.order === undefined" >
-       <div *ngIf="'any' === 'boolean'" [class.has-error]="orderCtrl.invalid">
-          <input id="chkorder" 
-          class="form-control" #orderCtrl="ngModel" [ngClass]="{ 'is-invalid': (orderCtrl.touched && orderCtrl.invalid) || (imageinfo.submitted && orderCtrl.invalid) }"
-          type="checkbox" name="order" [(ngModel)]="this.imageinfoDto.order"/>
-            <div *ngIf="(orderCtrl.invalid) " class="invalid-feedback">
-                
-            </div>
-            <br/><br/>
-       </div>
-       <div *ngIf="'any' !== 'boolean'" [class.has-error]="orderCtrl.invalid">
-          <input id="txtorder" 
-          class="form-control" #orderCtrl="ngModel" [ngClass]="{ 'is-invalid': (orderCtrl.touched && orderCtrl.invalid) || (imageinfo.submitted && orderCtrl.invalid) }"
-           name="order" type="text" [(ngModel)]="this.imageinfoDto.order"/>
-            <div *ngIf="(orderCtrl.invalid) " class="invalid-feedback">
-                 
-            </div>
-            <br/><br/>
-       </div>
-    </div>
-    <div class="col-sm-3" *ngIf="this.orders !== undefined && this.order === undefined" [class.has-error]="orderCtrl.invalid">
-        <select class="form-control" 
-                      #orderCtrl="ngModel" [ngClass]="{ 'is-invalid': (orderCtrl.touched && orderCtrl.invalid) || (imageinfo.submitted && orderCtrl.invalid) }"
-                       [(ngModel)] = "this.imageinfoDto.order"  name="order"
-                       (ngChange) = "this.selectorder($event)">
-                <option *ngFor="let colVal of this.orders" [ngValue] = "colVal">
-                    {{colVal.orderId}}
-                </option>
-        </select>
-        <div *ngIf="(orderCtrl.invalid) " class="invalid-feedback">
-             
-        </div>
-        <br/><br/>
-     </div>
-    <div class="col-sm-3" *ngIf="this.order !== undefined && this.orders === undefined" [class.has-error]="orderCtrl.invalid">
-         <select class="form-control" 
-                       #orderCtrl="ngModel" [ngClass]="{ 'is-invalid': (orderCtrl.touched && orderCtrl.invalid) || (imageinfo.submitted && orderCtrl.invalid) }"
-                       [(ngModel)] = "this.imageinfoDto.order" name="order"
-                       (ngChange) = "this.selectorder($event)">
-                 <option *ngFor="let colVal of this.order.values()" [ngValue] = "colVal">
-                     {{colVal}}
-                 </option>
-         </select>
-         <div *ngIf="(orderCtrl.invalid)" class="invalid-feedback">
-              
-         </div>
-         <br/><br/>
-     </div>
-  </div>
 
  </fieldset>
 

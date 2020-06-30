@@ -11,56 +11,56 @@
  <fieldset style="padding:3%; min-height: 250px;">
   <div class="row form-group has-error" >
       <div class="col-sm-2">
-      <label for="txtName" >status: </label>
+      <label for="txtName" >orderDate: </label>
     </div>
-    <div class="col-sm-3" *ngIf="this.statuss === undefined && this.status === undefined" >
-       <div *ngIf="'any' === 'boolean'" [class.has-error]="statusCtrl.invalid">
-          <input id="chkstatus"  required
-          class="form-control" #statusCtrl="ngModel" [ngClass]="{ 'is-invalid': (statusCtrl.touched && statusCtrl.invalid) || (order.submitted && statusCtrl.invalid) }"
-          type="checkbox" name="status" [(ngModel)]="this.orderDto.status"/>
-            <div *ngIf="(statusCtrl.invalid) " class="invalid-feedback">
-                					<div *ngIf="statusCtrl.errors.required">status is required. </div>
+    <div class="col-sm-3" *ngIf="this.orderDates === undefined && this.orderDate === undefined" >
+       <div *ngIf="'Date' === 'boolean'" [class.has-error]="orderDateCtrl.invalid">
+          <input id="chkorderDate"  required
+          class="form-control" #orderDateCtrl="ngModel" [ngClass]="{ 'is-invalid': (orderDateCtrl.touched && orderDateCtrl.invalid) || (order.submitted && orderDateCtrl.invalid) }"
+          type="checkbox" name="orderDate" [(ngModel)]="this.orderDto.orderDate"/>
+            <div *ngIf="(orderDateCtrl.invalid) " class="invalid-feedback">
+                					<div *ngIf="orderDateCtrl.errors.required">orderDate is required. </div>
 
             </div>
             <br/><br/>
        </div>
-       <div *ngIf="'any' !== 'boolean'" [class.has-error]="statusCtrl.invalid">
-          <input id="txtstatus"  required
-          class="form-control" #statusCtrl="ngModel" [ngClass]="{ 'is-invalid': (statusCtrl.touched && statusCtrl.invalid) || (order.submitted && statusCtrl.invalid) }"
-           name="status" type="text" [(ngModel)]="this.orderDto.status"/>
-            <div *ngIf="(statusCtrl.invalid) " class="invalid-feedback">
-                 					<div *ngIf="statusCtrl.errors.required">status is required. </div>
+       <div *ngIf="'Date' !== 'boolean'" [class.has-error]="orderDateCtrl.invalid">
+          <input id="txtorderDate"  required
+          class="form-control" #orderDateCtrl="ngModel" [ngClass]="{ 'is-invalid': (orderDateCtrl.touched && orderDateCtrl.invalid) || (order.submitted && orderDateCtrl.invalid) }"
+           name="orderDate" type="text" [(ngModel)]="this.orderDto.orderDate"/>
+            <div *ngIf="(orderDateCtrl.invalid) " class="invalid-feedback">
+                 					<div *ngIf="orderDateCtrl.errors.required">orderDate is required. </div>
 
             </div>
             <br/><br/>
        </div>
     </div>
-    <div class="col-sm-3" *ngIf="this.statuss !== undefined && this.status === undefined" [class.has-error]="statusCtrl.invalid">
+    <div class="col-sm-3" *ngIf="this.orderDates !== undefined && this.orderDate === undefined" [class.has-error]="orderDateCtrl.invalid">
         <select class="form-control"  required
-                      #statusCtrl="ngModel" [ngClass]="{ 'is-invalid': (statusCtrl.touched && statusCtrl.invalid) || (order.submitted && statusCtrl.invalid) }"
-                       [(ngModel)] = "this.orderDto.status"  name="status"
-                       (ngChange) = "this.selectstatus($event)">
-                <option *ngFor="let colVal of this.statuss" [ngValue] = "colVal">
-                    {{colVal.statusId}}
+                      #orderDateCtrl="ngModel" [ngClass]="{ 'is-invalid': (orderDateCtrl.touched && orderDateCtrl.invalid) || (order.submitted && orderDateCtrl.invalid) }"
+                       [(ngModel)] = "this.orderDto.orderDate"  name="orderDate"
+                       (ngChange) = "this.selectorderDate($event)">
+                <option *ngFor="let colVal of this.orderDates" [ngValue] = "colVal">
+                    {{colVal.orderDateId}}
                 </option>
         </select>
-        <div *ngIf="(statusCtrl.invalid) " class="invalid-feedback">
-             					<div *ngIf="statusCtrl.errors.required">status is required. </div>
+        <div *ngIf="(orderDateCtrl.invalid) " class="invalid-feedback">
+             					<div *ngIf="orderDateCtrl.errors.required">orderDate is required. </div>
 
         </div>
         <br/><br/>
      </div>
-    <div class="col-sm-3" *ngIf="this.status !== undefined && this.statuss === undefined" [class.has-error]="statusCtrl.invalid">
+    <div class="col-sm-3" *ngIf="this.orderDate !== undefined && this.orderDates === undefined" [class.has-error]="orderDateCtrl.invalid">
          <select class="form-control"  required
-                       #statusCtrl="ngModel" [ngClass]="{ 'is-invalid': (statusCtrl.touched && statusCtrl.invalid) || (order.submitted && statusCtrl.invalid) }"
-                       [(ngModel)] = "this.orderDto.status" name="status"
-                       (ngChange) = "this.selectstatus($event)">
-                 <option *ngFor="let colVal of this.status.values()" [ngValue] = "colVal">
+                       #orderDateCtrl="ngModel" [ngClass]="{ 'is-invalid': (orderDateCtrl.touched && orderDateCtrl.invalid) || (order.submitted && orderDateCtrl.invalid) }"
+                       [(ngModel)] = "this.orderDto.orderDate" name="orderDate"
+                       (ngChange) = "this.selectorderDate($event)">
+                 <option *ngFor="let colVal of this.orderDate.values()" [ngValue] = "colVal">
                      {{colVal}}
                  </option>
          </select>
-         <div *ngIf="(statusCtrl.invalid)" class="invalid-feedback">
-              					<div *ngIf="statusCtrl.errors.required">status is required. </div>
+         <div *ngIf="(orderDateCtrl.invalid)" class="invalid-feedback">
+              					<div *ngIf="orderDateCtrl.errors.required">orderDate is required. </div>
 
          </div>
          <br/><br/>
@@ -68,56 +68,56 @@
   </div>
 <div class="row form-group has-error" >
       <div class="col-sm-2">
-      <label for="txtName" >date: </label>
+      <label for="txtName" >orderStatus: </label>
     </div>
-    <div class="col-sm-3" *ngIf="this.dates === undefined && this.date === undefined" >
-       <div *ngIf="'Date' === 'boolean'" [class.has-error]="dateCtrl.invalid">
-          <input id="chkdate"  required
-          class="form-control" #dateCtrl="ngModel" [ngClass]="{ 'is-invalid': (dateCtrl.touched && dateCtrl.invalid) || (order.submitted && dateCtrl.invalid) }"
-          type="checkbox" name="date" [(ngModel)]="this.orderDto.date"/>
-            <div *ngIf="(dateCtrl.invalid) " class="invalid-feedback">
-                					<div *ngIf="dateCtrl.errors.required">date is required. </div>
+    <div class="col-sm-3" *ngIf="this.orderStatuss === undefined && this.orderStatus === undefined" >
+       <div *ngIf="'any' === 'boolean'" [class.has-error]="orderStatusCtrl.invalid">
+          <input id="chkorderStatus"  required
+          class="form-control" #orderStatusCtrl="ngModel" [ngClass]="{ 'is-invalid': (orderStatusCtrl.touched && orderStatusCtrl.invalid) || (order.submitted && orderStatusCtrl.invalid) }"
+          type="checkbox" name="orderStatus" [(ngModel)]="this.orderDto.orderStatus"/>
+            <div *ngIf="(orderStatusCtrl.invalid) " class="invalid-feedback">
+                					<div *ngIf="orderStatusCtrl.errors.required">orderStatus is required. </div>
 
             </div>
             <br/><br/>
        </div>
-       <div *ngIf="'Date' !== 'boolean'" [class.has-error]="dateCtrl.invalid">
-          <input id="txtdate"  required
-          class="form-control" #dateCtrl="ngModel" [ngClass]="{ 'is-invalid': (dateCtrl.touched && dateCtrl.invalid) || (order.submitted && dateCtrl.invalid) }"
-           name="date" type="text" [(ngModel)]="this.orderDto.date"/>
-            <div *ngIf="(dateCtrl.invalid) " class="invalid-feedback">
-                 					<div *ngIf="dateCtrl.errors.required">date is required. </div>
+       <div *ngIf="'any' !== 'boolean'" [class.has-error]="orderStatusCtrl.invalid">
+          <input id="txtorderStatus"  required
+          class="form-control" #orderStatusCtrl="ngModel" [ngClass]="{ 'is-invalid': (orderStatusCtrl.touched && orderStatusCtrl.invalid) || (order.submitted && orderStatusCtrl.invalid) }"
+           name="orderStatus" type="text" [(ngModel)]="this.orderDto.orderStatus"/>
+            <div *ngIf="(orderStatusCtrl.invalid) " class="invalid-feedback">
+                 					<div *ngIf="orderStatusCtrl.errors.required">orderStatus is required. </div>
 
             </div>
             <br/><br/>
        </div>
     </div>
-    <div class="col-sm-3" *ngIf="this.dates !== undefined && this.date === undefined" [class.has-error]="dateCtrl.invalid">
+    <div class="col-sm-3" *ngIf="this.orderStatuss !== undefined && this.orderStatus === undefined" [class.has-error]="orderStatusCtrl.invalid">
         <select class="form-control"  required
-                      #dateCtrl="ngModel" [ngClass]="{ 'is-invalid': (dateCtrl.touched && dateCtrl.invalid) || (order.submitted && dateCtrl.invalid) }"
-                       [(ngModel)] = "this.orderDto.date"  name="date"
-                       (ngChange) = "this.selectdate($event)">
-                <option *ngFor="let colVal of this.dates" [ngValue] = "colVal">
-                    {{colVal.dateId}}
+                      #orderStatusCtrl="ngModel" [ngClass]="{ 'is-invalid': (orderStatusCtrl.touched && orderStatusCtrl.invalid) || (order.submitted && orderStatusCtrl.invalid) }"
+                       [(ngModel)] = "this.orderDto.orderStatus"  name="orderStatus"
+                       (ngChange) = "this.selectorderStatus($event)">
+                <option *ngFor="let colVal of this.orderStatuss" [ngValue] = "colVal">
+                    {{colVal.orderStatusId}}
                 </option>
         </select>
-        <div *ngIf="(dateCtrl.invalid) " class="invalid-feedback">
-             					<div *ngIf="dateCtrl.errors.required">date is required. </div>
+        <div *ngIf="(orderStatusCtrl.invalid) " class="invalid-feedback">
+             					<div *ngIf="orderStatusCtrl.errors.required">orderStatus is required. </div>
 
         </div>
         <br/><br/>
      </div>
-    <div class="col-sm-3" *ngIf="this.date !== undefined && this.dates === undefined" [class.has-error]="dateCtrl.invalid">
+    <div class="col-sm-3" *ngIf="this.orderStatus !== undefined && this.orderStatuss === undefined" [class.has-error]="orderStatusCtrl.invalid">
          <select class="form-control"  required
-                       #dateCtrl="ngModel" [ngClass]="{ 'is-invalid': (dateCtrl.touched && dateCtrl.invalid) || (order.submitted && dateCtrl.invalid) }"
-                       [(ngModel)] = "this.orderDto.date" name="date"
-                       (ngChange) = "this.selectdate($event)">
-                 <option *ngFor="let colVal of this.date.values()" [ngValue] = "colVal">
+                       #orderStatusCtrl="ngModel" [ngClass]="{ 'is-invalid': (orderStatusCtrl.touched && orderStatusCtrl.invalid) || (order.submitted && orderStatusCtrl.invalid) }"
+                       [(ngModel)] = "this.orderDto.orderStatus" name="orderStatus"
+                       (ngChange) = "this.selectorderStatus($event)">
+                 <option *ngFor="let colVal of this.orderStatus.values()" [ngValue] = "colVal">
                      {{colVal}}
                  </option>
          </select>
-         <div *ngIf="(dateCtrl.invalid)" class="invalid-feedback">
-              					<div *ngIf="dateCtrl.errors.required">date is required. </div>
+         <div *ngIf="(orderStatusCtrl.invalid)" class="invalid-feedback">
+              					<div *ngIf="orderStatusCtrl.errors.required">orderStatus is required. </div>
 
          </div>
          <br/><br/>

@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {GenericServices} from './../GenericServices';
 import {ShopService} from './shop.service';
 import {ShopDto} from './ShopDto';
+import { UserService } from "../User/user.service";
 
 
 
@@ -10,7 +11,8 @@ import {ShopDto} from './ShopDto';
     selector: 'shop',
     templateUrl: './shop.component.html',
     styleUrls: ['./shop.component.css'],
-    providers: [ShopDto, ShopService, GenericServices ]
+    providers: [ShopDto, ShopService, GenericServices , UserService
+]
 })
 export class ShopComponent {
 
@@ -20,10 +22,12 @@ export class ShopComponent {
     shops: Array<Object>;
     shop: Object;
     saveOrUpdate : String = "Save";
-    
+    users: Array<Object>;
+
     
 
-    constructor(private router: Router, private shopDto: ShopDto, private shopService: ShopService, private genericServices: GenericServices ) {
+    constructor(private router: Router, private shopDto: ShopDto, private shopService: ShopService, private genericServices: GenericServices , private userService: UserService
+) {
           if(ShopService.selectedShop != undefined || ShopService.selectedShop != null){
             this.shopDto = ShopService.selectedShop;
             //this.shopDto.{1} = ShopService.selectedShop.{1};
@@ -31,7 +35,8 @@ export class ShopComponent {
           } else {
             this.saveOrUpdate = "Save";
           }
-	      
+	      this.getAllUsers();
+
     }
     
     createShopClicked() {
@@ -84,6 +89,23 @@ export class ShopComponent {
       )
     }
 
-    
+    getAllUsers() {
+      this.userService.getAllUsers().subscribe(
+        result => {
+          if(result != null) {
+            this.users = result;
+            console.log("All Users : " + JSON.stringify(result));
+          }
+        },
+        error => console.log(error)
+      )
+    }
+
+    selectuser(user) {
+      console.log("Selected User: " + JSON.stringify(user));
+      this.shopDto.user = user;
+      console.log(JSON.stringify(this.shopDto));
+    }
+
     
 }

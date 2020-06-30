@@ -11,6 +11,59 @@
  <fieldset style="padding:3%; min-height: 250px;">
   <div class="row form-group has-error" >
       <div class="col-sm-2">
+      <label for="txtName" >role: </label>
+    </div>
+    <div class="col-sm-3" *ngIf="this.roles === undefined && this.role === undefined" >
+       <div *ngIf="'any' === 'boolean'" [class.has-error]="roleCtrl.invalid">
+          <input id="chkrole" 
+          class="form-control" #roleCtrl="ngModel" [ngClass]="{ 'is-invalid': (roleCtrl.touched && roleCtrl.invalid) || (user.submitted && roleCtrl.invalid) }"
+          type="checkbox" name="role" [(ngModel)]="this.userDto.role"/>
+            <div *ngIf="(roleCtrl.invalid) " class="invalid-feedback">
+                
+            </div>
+            <br/><br/>
+       </div>
+       <div *ngIf="'any' !== 'boolean'" [class.has-error]="roleCtrl.invalid">
+          <input id="txtrole" 
+          class="form-control" #roleCtrl="ngModel" [ngClass]="{ 'is-invalid': (roleCtrl.touched && roleCtrl.invalid) || (user.submitted && roleCtrl.invalid) }"
+           name="role" type="text" [(ngModel)]="this.userDto.role"/>
+            <div *ngIf="(roleCtrl.invalid) " class="invalid-feedback">
+                 
+            </div>
+            <br/><br/>
+       </div>
+    </div>
+    <div class="col-sm-3" *ngIf="this.roles !== undefined && this.role === undefined" [class.has-error]="roleCtrl.invalid">
+        <select class="form-control" 
+                      #roleCtrl="ngModel" [ngClass]="{ 'is-invalid': (roleCtrl.touched && roleCtrl.invalid) || (user.submitted && roleCtrl.invalid) }"
+                       [(ngModel)] = "this.userDto.role"  name="role"
+                       (ngChange) = "this.selectrole($event)">
+                <option *ngFor="let colVal of this.roles" [ngValue] = "colVal">
+                    {{colVal.roleId}}
+                </option>
+        </select>
+        <div *ngIf="(roleCtrl.invalid) " class="invalid-feedback">
+             
+        </div>
+        <br/><br/>
+     </div>
+    <div class="col-sm-3" *ngIf="this.role !== undefined && this.roles === undefined" [class.has-error]="roleCtrl.invalid">
+         <select class="form-control" 
+                       #roleCtrl="ngModel" [ngClass]="{ 'is-invalid': (roleCtrl.touched && roleCtrl.invalid) || (user.submitted && roleCtrl.invalid) }"
+                       [(ngModel)] = "this.userDto.role" name="role"
+                       (ngChange) = "this.selectrole($event)">
+                 <option *ngFor="let colVal of this.role.values()" [ngValue] = "colVal">
+                     {{colVal}}
+                 </option>
+         </select>
+         <div *ngIf="(roleCtrl.invalid)" class="invalid-feedback">
+              
+         </div>
+         <br/><br/>
+     </div>
+  </div>
+<div class="row form-group has-error" >
+      <div class="col-sm-2">
       <label for="txtName" >client: </label>
     </div>
     <div class="col-sm-3" *ngIf="this.clients === undefined && this.client === undefined" >
@@ -115,59 +168,6 @@
          <div *ngIf="(userNameCtrl.invalid)" class="invalid-feedback">
               					<div *ngIf="userNameCtrl.errors.required">userName is required. </div>
 
-         </div>
-         <br/><br/>
-     </div>
-  </div>
-<div class="row form-group has-error" >
-      <div class="col-sm-2">
-      <label for="txtName" >role: </label>
-    </div>
-    <div class="col-sm-3" *ngIf="this.roles === undefined && this.role === undefined" >
-       <div *ngIf="'any' === 'boolean'" [class.has-error]="roleCtrl.invalid">
-          <input id="chkrole" 
-          class="form-control" #roleCtrl="ngModel" [ngClass]="{ 'is-invalid': (roleCtrl.touched && roleCtrl.invalid) || (user.submitted && roleCtrl.invalid) }"
-          type="checkbox" name="role" [(ngModel)]="this.userDto.role"/>
-            <div *ngIf="(roleCtrl.invalid) " class="invalid-feedback">
-                
-            </div>
-            <br/><br/>
-       </div>
-       <div *ngIf="'any' !== 'boolean'" [class.has-error]="roleCtrl.invalid">
-          <input id="txtrole" 
-          class="form-control" #roleCtrl="ngModel" [ngClass]="{ 'is-invalid': (roleCtrl.touched && roleCtrl.invalid) || (user.submitted && roleCtrl.invalid) }"
-           name="role" type="text" [(ngModel)]="this.userDto.role"/>
-            <div *ngIf="(roleCtrl.invalid) " class="invalid-feedback">
-                 
-            </div>
-            <br/><br/>
-       </div>
-    </div>
-    <div class="col-sm-3" *ngIf="this.roles !== undefined && this.role === undefined" [class.has-error]="roleCtrl.invalid">
-        <select class="form-control" 
-                      #roleCtrl="ngModel" [ngClass]="{ 'is-invalid': (roleCtrl.touched && roleCtrl.invalid) || (user.submitted && roleCtrl.invalid) }"
-                       [(ngModel)] = "this.userDto.role"  name="role"
-                       (ngChange) = "this.selectrole($event)">
-                <option *ngFor="let colVal of this.roles" [ngValue] = "colVal">
-                    {{colVal.roleId}}
-                </option>
-        </select>
-        <div *ngIf="(roleCtrl.invalid) " class="invalid-feedback">
-             
-        </div>
-        <br/><br/>
-     </div>
-    <div class="col-sm-3" *ngIf="this.role !== undefined && this.roles === undefined" [class.has-error]="roleCtrl.invalid">
-         <select class="form-control" 
-                       #roleCtrl="ngModel" [ngClass]="{ 'is-invalid': (roleCtrl.touched && roleCtrl.invalid) || (user.submitted && roleCtrl.invalid) }"
-                       [(ngModel)] = "this.userDto.role" name="role"
-                       (ngChange) = "this.selectrole($event)">
-                 <option *ngFor="let colVal of this.role.values()" [ngValue] = "colVal">
-                     {{colVal}}
-                 </option>
-         </select>
-         <div *ngIf="(roleCtrl.invalid)" class="invalid-feedback">
-              
          </div>
          <br/><br/>
      </div>

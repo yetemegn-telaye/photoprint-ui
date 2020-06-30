@@ -20,9 +20,8 @@ export class ShopimageinfoViewComponent{
     selectAllValue: boolean = false;
 
     constructor(private router: Router, private shopimageinfoDto: ShopimageinfoDto, private shopimageinfoService: ShopimageinfoService, private confirmationDialogService:  ConfirmationDialogService, private messageDialogService: MessageDialogService, private genericServices: GenericServices) {
-        this.columns = ["" ,"imagePrice"
-,"imageSize"
-,"shop"
+        this.columns = ["" ,"imageSize"
+,"imagePrice"
 ];
         this.getAllShopimageinfosClicked();
     }

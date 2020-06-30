@@ -40,12 +40,33 @@
         <td>
             <input type="checkbox" [(ngModel)]="shop.selected"/>
         </td>
-                <td *ngIf="!this.isNotPrimitive(shop.workingDays)">
+                <td *ngIf="!this.isNotPrimitive(shop.deliveryOpt)">
+            <input id="chkdeliveryOpt" *ngIf="this.isBoolean(shop.deliveryOpt)" type="checkbox" [(ngModel)]="shop.deliveryOpt"/>
+            <span *ngIf="!this.isBoolean(shop.deliveryOpt)">{{shop.deliveryOpt}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(shop.deliveryOpt)">
+             {{shop.deliveryOpt.deliveryOptId}}
+        </td>
+        <td *ngIf="!this.isNotPrimitive(shop.workingDays)">
             <input id="chkworkingDays" *ngIf="this.isBoolean(shop.workingDays)" type="checkbox" [(ngModel)]="shop.workingDays"/>
             <span *ngIf="!this.isBoolean(shop.workingDays)">{{shop.workingDays}}</span>
         </td>
         <td *ngIf="this.isNotPrimitive(shop.workingDays)">
              {{shop.workingDays.workingDaysId}}
+        </td>
+        <td *ngIf="!this.isNotPrimitive(shop.workingHrEnd)">
+            <input id="chkworkingHrEnd" *ngIf="this.isBoolean(shop.workingHrEnd)" type="checkbox" [(ngModel)]="shop.workingHrEnd"/>
+            <span *ngIf="!this.isBoolean(shop.workingHrEnd)">{{shop.workingHrEnd}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(shop.workingHrEnd)">
+             {{shop.workingHrEnd.workingHrEndId}}
+        </td>
+        <td *ngIf="!this.isNotPrimitive(shop.contact)">
+            <input id="chkcontact" *ngIf="this.isBoolean(shop.contact)" type="checkbox" [(ngModel)]="shop.contact"/>
+            <span *ngIf="!this.isBoolean(shop.contact)">{{shop.contact}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(shop.contact)">
+             {{shop.contact.contactId}}
         </td>
         <td *ngIf="!this.isNotPrimitive(shop.name)">
             <input id="chkname" *ngIf="this.isBoolean(shop.name)" type="checkbox" [(ngModel)]="shop.name"/>
@@ -60,27 +81,6 @@
         </td>
         <td *ngIf="this.isNotPrimitive(shop.workingHrStart)">
              {{shop.workingHrStart.workingHrStartId}}
-        </td>
-        <td *ngIf="!this.isNotPrimitive(shop.deliveryOpt)">
-            <input id="chkdeliveryOpt" *ngIf="this.isBoolean(shop.deliveryOpt)" type="checkbox" [(ngModel)]="shop.deliveryOpt"/>
-            <span *ngIf="!this.isBoolean(shop.deliveryOpt)">{{shop.deliveryOpt}}</span>
-        </td>
-        <td *ngIf="this.isNotPrimitive(shop.deliveryOpt)">
-             {{shop.deliveryOpt.deliveryOptId}}
-        </td>
-        <td *ngIf="!this.isNotPrimitive(shop.contact)">
-            <input id="chkcontact" *ngIf="this.isBoolean(shop.contact)" type="checkbox" [(ngModel)]="shop.contact"/>
-            <span *ngIf="!this.isBoolean(shop.contact)">{{shop.contact}}</span>
-        </td>
-        <td *ngIf="this.isNotPrimitive(shop.contact)">
-             {{shop.contact.contactId}}
-        </td>
-        <td *ngIf="!this.isNotPrimitive(shop.workingHrEnd)">
-            <input id="chkworkingHrEnd" *ngIf="this.isBoolean(shop.workingHrEnd)" type="checkbox" [(ngModel)]="shop.workingHrEnd"/>
-            <span *ngIf="!this.isBoolean(shop.workingHrEnd)">{{shop.workingHrEnd}}</span>
-        </td>
-        <td *ngIf="this.isNotPrimitive(shop.workingHrEnd)">
-             {{shop.workingHrEnd.workingHrEndId}}
         </td>
 
     </tr>

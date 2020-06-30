@@ -20,8 +20,8 @@ export class OrderViewComponent{
     selectAllValue: boolean = false;
 
     constructor(private router: Router, private orderDto: OrderDto, private orderService: OrderService, private confirmationDialogService:  ConfirmationDialogService, private messageDialogService: MessageDialogService, private genericServices: GenericServices) {
-        this.columns = ["" ,"status"
-,"date"
+        this.columns = ["" ,"orderDate"
+,"orderStatus"
 ];
         this.getAllOrdersClicked();
     }

@@ -1,15 +1,15 @@
 export class AddressDto {
     selected : boolean;
     addressId : string;
-    	kebele : number;
-	city : string;
-	country : string;
-	streetAddress : string;
-	zipCode : number;
-	client : any;
+    	woreda : number;
 	shop : any;
-	woreda : number;
+	client : any;
+	streetAddress : string;
+	kebele : number;
+	city : string;
 	location : string;
+	zipCode : number;
+	country : string;
 
 
     toString() {

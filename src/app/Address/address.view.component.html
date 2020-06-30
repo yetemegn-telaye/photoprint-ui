@@ -40,7 +40,21 @@
         <td>
             <input type="checkbox" [(ngModel)]="address.selected"/>
         </td>
-                <td *ngIf="!this.isNotPrimitive(address.kebele)">
+                <td *ngIf="!this.isNotPrimitive(address.woreda)">
+            <input id="chkworeda" *ngIf="this.isBoolean(address.woreda)" type="checkbox" [(ngModel)]="address.woreda"/>
+            <span *ngIf="!this.isBoolean(address.woreda)">{{address.woreda}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(address.woreda)">
+             {{address.woreda.woredaId}}
+        </td>
+        <td *ngIf="!this.isNotPrimitive(address.streetAddress)">
+            <input id="chkstreetAddress" *ngIf="this.isBoolean(address.streetAddress)" type="checkbox" [(ngModel)]="address.streetAddress"/>
+            <span *ngIf="!this.isBoolean(address.streetAddress)">{{address.streetAddress}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(address.streetAddress)">
+             {{address.streetAddress.streetAddressId}}
+        </td>
+        <td *ngIf="!this.isNotPrimitive(address.kebele)">
             <input id="chkkebele" *ngIf="this.isBoolean(address.kebele)" type="checkbox" [(ngModel)]="address.kebele"/>
             <span *ngIf="!this.isBoolean(address.kebele)">{{address.kebele}}</span>
         </td>
@@ -54,19 +68,12 @@
         <td *ngIf="this.isNotPrimitive(address.city)">
              {{address.city.cityId}}
         </td>
-        <td *ngIf="!this.isNotPrimitive(address.country)">
-            <input id="chkcountry" *ngIf="this.isBoolean(address.country)" type="checkbox" [(ngModel)]="address.country"/>
-            <span *ngIf="!this.isBoolean(address.country)">{{address.country}}</span>
+        <td *ngIf="!this.isNotPrimitive(address.location)">
+            <input id="chklocation" *ngIf="this.isBoolean(address.location)" type="checkbox" [(ngModel)]="address.location"/>
+            <span *ngIf="!this.isBoolean(address.location)">{{address.location}}</span>
         </td>
-        <td *ngIf="this.isNotPrimitive(address.country)">
-             {{address.country.countryId}}
-        </td>
-        <td *ngIf="!this.isNotPrimitive(address.streetAddress)">
-            <input id="chkstreetAddress" *ngIf="this.isBoolean(address.streetAddress)" type="checkbox" [(ngModel)]="address.streetAddress"/>
-            <span *ngIf="!this.isBoolean(address.streetAddress)">{{address.streetAddress}}</span>
-        </td>
-        <td *ngIf="this.isNotPrimitive(address.streetAddress)">
-             {{address.streetAddress.streetAddressId}}
+        <td *ngIf="this.isNotPrimitive(address.location)">
+             {{address.location.locationId}}
         </td>
         <td *ngIf="!this.isNotPrimitive(address.zipCode)">
             <input id="chkzipCode" *ngIf="this.isBoolean(address.zipCode)" type="checkbox" [(ngModel)]="address.zipCode"/>
@@ -75,33 +82,12 @@
         <td *ngIf="this.isNotPrimitive(address.zipCode)">
              {{address.zipCode.zipCodeId}}
         </td>
-        <td *ngIf="!this.isNotPrimitive(address.client)">
-            <input id="chkclient" *ngIf="this.isBoolean(address.client)" type="checkbox" [(ngModel)]="address.client"/>
-            <span *ngIf="!this.isBoolean(address.client)">{{address.client}}</span>
+        <td *ngIf="!this.isNotPrimitive(address.country)">
+            <input id="chkcountry" *ngIf="this.isBoolean(address.country)" type="checkbox" [(ngModel)]="address.country"/>
+            <span *ngIf="!this.isBoolean(address.country)">{{address.country}}</span>
         </td>
-        <td *ngIf="this.isNotPrimitive(address.client)">
-             {{address.client.clientId}}
-        </td>
-        <td *ngIf="!this.isNotPrimitive(address.shop)">
-            <input id="chkshop" *ngIf="this.isBoolean(address.shop)" type="checkbox" [(ngModel)]="address.shop"/>
-            <span *ngIf="!this.isBoolean(address.shop)">{{address.shop}}</span>
-        </td>
-        <td *ngIf="this.isNotPrimitive(address.shop)">
-             {{address.shop.shopId}}
-        </td>
-        <td *ngIf="!this.isNotPrimitive(address.woreda)">
-            <input id="chkworeda" *ngIf="this.isBoolean(address.woreda)" type="checkbox" [(ngModel)]="address.woreda"/>
-            <span *ngIf="!this.isBoolean(address.woreda)">{{address.woreda}}</span>
-        </td>
-        <td *ngIf="this.isNotPrimitive(address.woreda)">
-             {{address.woreda.woredaId}}
-        </td>
-        <td *ngIf="!this.isNotPrimitive(address.location)">
-            <input id="chklocation" *ngIf="this.isBoolean(address.location)" type="checkbox" [(ngModel)]="address.location"/>
-            <span *ngIf="!this.isBoolean(address.location)">{{address.location}}</span>
-        </td>
-        <td *ngIf="this.isNotPrimitive(address.location)">
-             {{address.location.locationId}}
+        <td *ngIf="this.isNotPrimitive(address.country)">
+             {{address.country.countryId}}
         </td>
 
     </tr>

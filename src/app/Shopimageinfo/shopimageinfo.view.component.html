@@ -40,26 +40,19 @@
         <td>
             <input type="checkbox" [(ngModel)]="shopimageinfo.selected"/>
         </td>
-                <td *ngIf="!this.isNotPrimitive(shopimageinfo.imagePrice)">
-            <input id="chkimagePrice" *ngIf="this.isBoolean(shopimageinfo.imagePrice)" type="checkbox" [(ngModel)]="shopimageinfo.imagePrice"/>
-            <span *ngIf="!this.isBoolean(shopimageinfo.imagePrice)">{{shopimageinfo.imagePrice}}</span>
-        </td>
-        <td *ngIf="this.isNotPrimitive(shopimageinfo.imagePrice)">
-             {{shopimageinfo.imagePrice.imagePriceId}}
-        </td>
-        <td *ngIf="!this.isNotPrimitive(shopimageinfo.imageSize)">
+                <td *ngIf="!this.isNotPrimitive(shopimageinfo.imageSize)">
             <input id="chkimageSize" *ngIf="this.isBoolean(shopimageinfo.imageSize)" type="checkbox" [(ngModel)]="shopimageinfo.imageSize"/>
             <span *ngIf="!this.isBoolean(shopimageinfo.imageSize)">{{shopimageinfo.imageSize}}</span>
         </td>
         <td *ngIf="this.isNotPrimitive(shopimageinfo.imageSize)">
              {{shopimageinfo.imageSize.imageSizeId}}
         </td>
-        <td *ngIf="!this.isNotPrimitive(shopimageinfo.shop)">
-            <input id="chkshop" *ngIf="this.isBoolean(shopimageinfo.shop)" type="checkbox" [(ngModel)]="shopimageinfo.shop"/>
-            <span *ngIf="!this.isBoolean(shopimageinfo.shop)">{{shopimageinfo.shop}}</span>
+        <td *ngIf="!this.isNotPrimitive(shopimageinfo.imagePrice)">
+            <input id="chkimagePrice" *ngIf="this.isBoolean(shopimageinfo.imagePrice)" type="checkbox" [(ngModel)]="shopimageinfo.imagePrice"/>
+            <span *ngIf="!this.isBoolean(shopimageinfo.imagePrice)">{{shopimageinfo.imagePrice}}</span>
         </td>
-        <td *ngIf="this.isNotPrimitive(shopimageinfo.shop)">
-             {{shopimageinfo.shop.shopId}}
+        <td *ngIf="this.isNotPrimitive(shopimageinfo.imagePrice)">
+             {{shopimageinfo.imagePrice.imagePriceId}}
         </td>
 
     </tr>

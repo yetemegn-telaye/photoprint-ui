@@ -40,7 +40,14 @@
         <td>
             <input type="checkbox" [(ngModel)]="user.selected"/>
         </td>
-                <td *ngIf="!this.isNotPrimitive(user.client)">
+                <td *ngIf="!this.isNotPrimitive(user.role)">
+            <input id="chkrole" *ngIf="this.isBoolean(user.role)" type="checkbox" [(ngModel)]="user.role"/>
+            <span *ngIf="!this.isBoolean(user.role)">{{user.role}}</span>
+        </td>
+        <td *ngIf="this.isNotPrimitive(user.role)">
+             {{user.role.roleId}}
+        </td>
+        <td *ngIf="!this.isNotPrimitive(user.client)">
             <input id="chkclient" *ngIf="this.isBoolean(user.client)" type="checkbox" [(ngModel)]="user.client"/>
             <span *ngIf="!this.isBoolean(user.client)">{{user.client}}</span>
         </td>
@@ -53,13 +60,6 @@
         </td>
         <td *ngIf="this.isNotPrimitive(user.userName)">
              {{user.userName.userNameId}}
-        </td>
-        <td *ngIf="!this.isNotPrimitive(user.role)">
-            <input id="chkrole" *ngIf="this.isBoolean(user.role)" type="checkbox" [(ngModel)]="user.role"/>
-            <span *ngIf="!this.isBoolean(user.role)">{{user.role}}</span>
-        </td>
-        <td *ngIf="this.isNotPrimitive(user.role)">
-             {{user.role.roleId}}
         </td>
         <td *ngIf="!this.isNotPrimitive(user.password)">
             <input id="chkpassword" *ngIf="this.isBoolean(user.password)" type="checkbox" [(ngModel)]="user.password"/>

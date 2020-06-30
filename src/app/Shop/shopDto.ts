@@ -1,15 +1,16 @@
 export class ShopDto {
     selected : boolean;
     shopId : string;
-    	workingDays : string;
-	name : string;
-	shopImgInfos : Set<any>;
-	workingHrStart : any;
-	orders : Set<any>;
-	addresss : Set<any>;
-	deliveryOpt : any;
-	contact : any;
+    	deliveryOpt : any;
+	workingDays : string;
 	workingHrEnd : any;
+	contact : any;
+	shopImgInfos : Set<any>;
+	name : string;
+	orders : Set<any>;
+	user : any;
+	workingHrStart : any;
+	addresss : Set<any>;
 
 
     toString() {

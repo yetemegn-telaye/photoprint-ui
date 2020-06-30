@@ -1,12 +1,12 @@
 export class ClientDto {
     selected : boolean;
     clientId : string;
-    	contact : any;
-	lastName : string;
-	user : any;
+    	lastName : string;
+	contact : any;
 	orders : Set<any>;
-	firstName : string;
 	addresss : Set<any>;
+	user : any;
+	firstName : string;
 	middleName : string;
 	imageInfos : Set<any>;
 

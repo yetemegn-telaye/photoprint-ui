@@ -40,19 +40,19 @@
         <td>
             <input type="checkbox" [(ngModel)]="order.selected"/>
         </td>
-                <td *ngIf="!this.isNotPrimitive(order.status)">
-            <input id="chkstatus" *ngIf="this.isBoolean(order.status)" type="checkbox" [(ngModel)]="order.status"/>
-            <span *ngIf="!this.isBoolean(order.status)">{{order.status}}</span>
+                <td *ngIf="!this.isNotPrimitive(order.orderDate)">
+            <input id="chkorderDate" *ngIf="this.isBoolean(order.orderDate)" type="checkbox" [(ngModel)]="order.orderDate"/>
+            <span *ngIf="!this.isBoolean(order.orderDate)">{{order.orderDate}}</span>
         </td>
-        <td *ngIf="this.isNotPrimitive(order.status)">
-             {{order.status.statusId}}
+        <td *ngIf="this.isNotPrimitive(order.orderDate)">
+             {{order.orderDate.orderDateId}}
         </td>
-        <td *ngIf="!this.isNotPrimitive(order.date)">
-            <input id="chkdate" *ngIf="this.isBoolean(order.date)" type="checkbox" [(ngModel)]="order.date"/>
-            <span *ngIf="!this.isBoolean(order.date)">{{order.date}}</span>
+        <td *ngIf="!this.isNotPrimitive(order.orderStatus)">
+            <input id="chkorderStatus" *ngIf="this.isBoolean(order.orderStatus)" type="checkbox" [(ngModel)]="order.orderStatus"/>
+            <span *ngIf="!this.isBoolean(order.orderStatus)">{{order.orderStatus}}</span>
         </td>
-        <td *ngIf="this.isNotPrimitive(order.date)">
-             {{order.date.dateId}}
+        <td *ngIf="this.isNotPrimitive(order.orderStatus)">
+             {{order.orderStatus.orderStatusId}}
         </td>
 
     </tr>

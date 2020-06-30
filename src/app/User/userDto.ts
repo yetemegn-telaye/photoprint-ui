@@ -1,11 +1,11 @@
 export class UserDto {
     selected : boolean;
     userId : string;
-    	client : any;
+    	role : any;
+	client : any;
 	userName : string;
-	role : any;
-	shops : Set<any>;
 	password : string;
+	shops : Set<any>;
 
 
     toString() {

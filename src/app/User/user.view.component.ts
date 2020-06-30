@@ -20,9 +20,9 @@ export class UserViewComponent{
     selectAllValue: boolean = false;
 
     constructor(private router: Router, private userDto: UserDto, private userService: UserService, private confirmationDialogService:  ConfirmationDialogService, private messageDialogService: MessageDialogService, private genericServices: GenericServices) {
-        this.columns = ["" ,"client"
+        this.columns = ["" ,"role"
+,"client"
 ,"userName"
-,"role"
 ,"password"
 ];
         this.getAllUsersClicked();

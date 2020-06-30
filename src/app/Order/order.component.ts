@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {GenericServices} from './../GenericServices';
 import {OrderService} from './order.service';
 import {OrderDto} from './OrderDto';
+import { ShopService } from "../Shop/shop.service";
 
 
 
@@ -10,7 +11,8 @@ import {OrderDto} from './OrderDto';
     selector: 'order',
     templateUrl: './order.component.html',
     styleUrls: ['./order.component.css'],
-    providers: [OrderDto, OrderService, GenericServices ]
+    providers: [OrderDto, OrderService, GenericServices , ShopService
+]
 })
 export class OrderComponent {
 
@@ -20,10 +22,12 @@ export class OrderComponent {
     orders: Array<Object>;
     order: Object;
     saveOrUpdate : String = "Save";
-    
+    shops: Array<Object>;
+
     
 
-    constructor(private router: Router, private orderDto: OrderDto, private orderService: OrderService, private genericServices: GenericServices ) {
+    constructor(private router: Router, private orderDto: OrderDto, private orderService: OrderService, private genericServices: GenericServices , private shopService: ShopService
+) {
           if(OrderService.selectedOrder != undefined || OrderService.selectedOrder != null){
             this.orderDto = OrderService.selectedOrder;
             //this.orderDto.{1} = OrderService.selectedOrder.{1};
@@ -31,7 +35,8 @@ export class OrderComponent {
           } else {
             this.saveOrUpdate = "Save";
           }
-	      
+	      this.getAllShops();
+
     }
     
     createOrderClicked() {
@@ -84,6 +89,23 @@ export class OrderComponent {
       )
     }
 
-    
+    getAllShops() {
+      this.shopService.getAllShops().subscribe(
+        result => {
+          if(result != null) {
+            this.shops = result;
+            console.log("All Shops : " + JSON.stringify(result));
+          }
+        },
+        error => console.log(error)
+      )
+    }
+
+    selectshop(shop) {
+      console.log("Selected Shop: " + JSON.stringify(shop));
+      this.orderDto.shop = shop;
+      console.log(JSON.stringify(this.orderDto));
+    }
+
     
 }

@@ -20,15 +20,13 @@ export class AddressViewComponent{
     selectAllValue: boolean = false;
 
     constructor(private router: Router, private addressDto: AddressDto, private addressService: AddressService, private confirmationDialogService:  ConfirmationDialogService, private messageDialogService: MessageDialogService, private genericServices: GenericServices) {
-        this.columns = ["" ,"kebele"
-,"city"
-,"country"
+        this.columns = ["" ,"woreda"
 ,"streetAddress"
-,"zipCode"
-,"client"
-,"shop"
-,"woreda"
+,"kebele"
+,"city"
 ,"location"
+,"zipCode"
+,"country"
 ];
         this.getAllAddresssClicked();
     }

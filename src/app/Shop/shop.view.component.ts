@@ -20,12 +20,12 @@ export class ShopViewComponent{
     selectAllValue: boolean = false;
 
     constructor(private router: Router, private shopDto: ShopDto, private shopService: ShopService, private confirmationDialogService:  ConfirmationDialogService, private messageDialogService: MessageDialogService, private genericServices: GenericServices) {
-        this.columns = ["" ,"workingDays"
+        this.columns = ["" ,"deliveryOpt"
+,"workingDays"
+,"workingHrEnd"
+,"contact"
 ,"name"
 ,"workingHrStart"
-,"deliveryOpt"
-,"contact"
-,"workingHrEnd"
 ];
         this.getAllShopsClicked();
     }

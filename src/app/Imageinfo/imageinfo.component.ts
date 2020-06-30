@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {GenericServices} from './../GenericServices';
 import {ImageinfoService} from './imageinfo.service';
 import {ImageinfoDto} from './ImageinfoDto';
-import { OrderService } from "../Order/order.service";
+import { ClientService } from "../Client/client.service";
 
 
 
@@ -11,7 +11,7 @@ import { OrderService } from "../Order/order.service";
     selector: 'imageinfo',
     templateUrl: './imageinfo.component.html',
     styleUrls: ['./imageinfo.component.css'],
-    providers: [ImageinfoDto, ImageinfoService, GenericServices , OrderService
+    providers: [ImageinfoDto, ImageinfoService, GenericServices , ClientService
 ]
 })
 export class ImageinfoComponent {
@@ -22,11 +22,11 @@ export class ImageinfoComponent {
     imageinfos: Array<Object>;
     imageinfo: Object;
     saveOrUpdate : String = "Save";
-    orders: Array<Object>;
+    clients: Array<Object>;
 
     
 
-    constructor(private router: Router, private imageinfoDto: ImageinfoDto, private imageinfoService: ImageinfoService, private genericServices: GenericServices , private orderService: OrderService
+    constructor(private router: Router, private imageinfoDto: ImageinfoDto, private imageinfoService: ImageinfoService, private genericServices: GenericServices , private clientService: ClientService
 ) {
           if(ImageinfoService.selectedImageinfo != undefined || ImageinfoService.selectedImageinfo != null){
             this.imageinfoDto = ImageinfoService.selectedImageinfo;
@@ -35,7 +35,7 @@ export class ImageinfoComponent {
           } else {
             this.saveOrUpdate = "Save";
           }
-	      this.getAllOrders();
+	      this.getAllClients();
 
     }
     
@@ -89,21 +89,21 @@ export class ImageinfoComponent {
       )
     }
 
-    getAllOrders() {
-      this.orderService.getAllOrders().subscribe(
+    getAllClients() {
+      this.clientService.getAllClients().subscribe(
         result => {
           if(result != null) {
-            this.orders = result;
-            console.log("All Orders : " + JSON.stringify(result));
+            this.clients = result;
+            console.log("All Clients : " + JSON.stringify(result));
           }
         },
         error => console.log(error)
       )
     }
 
-    selectorder(order) {
-      console.log("Selected Order: " + JSON.stringify(order));
-      this.imageinfoDto.order = order;
+    selectclient(client) {
+      console.log("Selected Client: " + JSON.stringify(client));
+      this.imageinfoDto.client = client;
       console.log(JSON.stringify(this.imageinfoDto));
     }
 

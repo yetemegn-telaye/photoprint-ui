@@ -20,8 +20,8 @@ export class ClientViewComponent{
     selectAllValue: boolean = false;
 
     constructor(private router: Router, private clientDto: ClientDto, private clientService: ClientService, private confirmationDialogService:  ConfirmationDialogService, private messageDialogService: MessageDialogService, private genericServices: GenericServices) {
-        this.columns = ["" ,"contact"
-,"lastName"
+        this.columns = ["" ,"lastName"
+,"contact"
 ,"user"
 ,"firstName"
 ,"middleName"

@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {GenericServices} from './../GenericServices';
 import {AddressService} from './address.service';
 import {AddressDto} from './AddressDto';
-import { ClientService } from "../Client/client.service";
+import { ShopService } from "../Shop/shop.service";
 
 
 
@@ -11,8 +11,7 @@ import { ClientService } from "../Client/client.service";
     selector: 'address',
     templateUrl: './address.component.html',
     styleUrls: ['./address.component.css'],
-    providers: [AddressDto, AddressService, GenericServices , ClientService
-, ClientService
+    providers: [AddressDto, AddressService, GenericServices , ShopService
 ]
 })
 export class AddressComponent {
@@ -23,10 +22,11 @@ export class AddressComponent {
     addresss: Array<Object>;
     address: Object;
     saveOrUpdate : String = "Save";
-    clients: Array<Object>;
+    shops: Array<Object>;
+
     
 
-    constructor(private router: Router, private addressDto: AddressDto, private addressService: AddressService, private genericServices: GenericServices , private clientService: ClientService
+    constructor(private router: Router, private addressDto: AddressDto, private addressService: AddressService, private genericServices: GenericServices , private shopService: ShopService
 ) {
           if(AddressService.selectedAddress != undefined || AddressService.selectedAddress != null){
             this.addressDto = AddressService.selectedAddress;
@@ -35,8 +35,7 @@ export class AddressComponent {
           } else {
             this.saveOrUpdate = "Save";
           }
-	      this.getAllClients();
-this.getAllClients();
+	      this.getAllShops();
 
     }
     
@@ -90,21 +89,21 @@ this.getAllClients();
       )
     }
 
-    getAllClients() {
-      this.clientService.getAllClients().subscribe(
+    getAllShops() {
+      this.shopService.getAllShops().subscribe(
         result => {
           if(result != null) {
-            this.clients = result;
-            console.log("All Clients : " + JSON.stringify(result));
+            this.shops = result;
+            console.log("All Shops : " + JSON.stringify(result));
           }
         },
         error => console.log(error)
       )
     }
 
-    selectclient(client) {
-      console.log("Selected Client: " + JSON.stringify(client));
-      this.addressDto.client = client;
+    selectshop(shop) {
+      console.log("Selected Shop: " + JSON.stringify(shop));
+      this.addressDto.shop = shop;
       console.log(JSON.stringify(this.addressDto));
     }
 
