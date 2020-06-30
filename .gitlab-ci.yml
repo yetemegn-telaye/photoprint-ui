@@ -12,6 +12,11 @@ image: node:latest
 
 # This folder is cached between builds
 # http://docs.gitlab.com/ce/ci/yaml/README.html#cache
+
+stages:
+  - dependency
+  - build
+
 cache:
   paths:
     - node_modules/
