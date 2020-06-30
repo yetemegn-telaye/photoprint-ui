@@ -17,6 +17,10 @@ stages:
   - dependency
   - build
 
+before_script:
+  - echo "***************** Start CI/CD *************"
+
+
 cache:
   paths:
     - node_modules/
@@ -28,3 +32,6 @@ dependency:
 build:
   script:
     - npm run-script build
+
+after_script:
+  - echo "************* End CI/CD *****************"
