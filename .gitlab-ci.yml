@@ -31,7 +31,7 @@ dependency:
 
 build:
   script:
-    - npm publish
+    - ng build
 
 after_script:
   - echo "************* End CI/CD *****************"
