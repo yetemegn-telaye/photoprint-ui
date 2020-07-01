@@ -19,8 +19,8 @@ image: node:latest
 
 stages:
   - build
-  - test
-
+  - build
+test
 before_script:
   - echo "***************** Start CI/CD *************"
 
