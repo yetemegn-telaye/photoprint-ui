@@ -30,6 +30,7 @@ cache:
     - node_modules/
 
 dependencies:
+  stage: dependencies
   script:
     - npm install
   artifacts:
@@ -37,6 +38,7 @@ dependencies:
     - node_modules/
 
 build:
+  stage: build
   script:
     - npm build
 
