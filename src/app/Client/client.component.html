@@ -74,27 +74,7 @@
       <div class="col-sm-2">
       <label for="txtName" >contact: </label>
     </div>
-    <div class="col-sm-3" *ngIf="this.contacts === undefined && this.contact === undefined" >
-       <div *ngIf="'any' === 'boolean'" [class.has-error]="contactCtrl.invalid">
-          <input id="chkcontact" 
-          class="form-control" #contactCtrl="ngModel" [ngClass]="{ 'is-invalid': (contactCtrl.touched && contactCtrl.invalid) || (client.submitted && contactCtrl.invalid) }"
-          type="checkbox" name="contact" [(ngModel)]="this.clientDto.contact"/>
-            <div *ngIf="(contactCtrl.invalid) " class="invalid-feedback">
-                
-            </div>
-            <br/><br/>
-       </div>
-       <div *ngIf="'any' !== 'boolean'" [class.has-error]="contactCtrl.invalid">
-          <input id="txtcontact" 
-          class="form-control" #contactCtrl="ngModel" [ngClass]="{ 'is-invalid': (contactCtrl.touched && contactCtrl.invalid) || (client.submitted && contactCtrl.invalid) }"
-           name="contact" type="text" [(ngModel)]="this.clientDto.contact"/>
-            <div *ngIf="(contactCtrl.invalid) " class="invalid-feedback">
-                 
-            </div>
-            <br/><br/>
-       </div>
-    </div>
-    <div class="col-sm-3" *ngIf="this.contacts !== undefined && this.contact === undefined" [class.has-error]="contactCtrl.invalid">
+    <div class="col-sm-3" [class.has-error]="contactCtrl.invalid">
         <select class="form-control" 
                       #contactCtrl="ngModel" [ngClass]="{ 'is-invalid': (contactCtrl.touched && contactCtrl.invalid) || (client.submitted && contactCtrl.invalid) }"
                        [(ngModel)] = "this.clientDto.contact"  name="contact"
@@ -108,20 +88,7 @@
         </div>
         <br/><br/>
      </div>
-    <div class="col-sm-3" *ngIf="this.contact !== undefined && this.contacts === undefined" [class.has-error]="contactCtrl.invalid">
-         <select class="form-control" 
-                       #contactCtrl="ngModel" [ngClass]="{ 'is-invalid': (contactCtrl.touched && contactCtrl.invalid) || (client.submitted && contactCtrl.invalid) }"
-                       [(ngModel)] = "this.clientDto.contact" name="contact"
-                       (ngChange) = "this.selectcontact($event)">
-                 <option *ngFor="let colVal of this.contact.values()" [ngValue] = "colVal">
-                     {{colVal}}
-                 </option>
-         </select>
-         <div *ngIf="(contactCtrl.invalid)" class="invalid-feedback">
-              
-         </div>
-         <br/><br/>
-     </div>
+
   </div>
 <div class="row form-group has-error" >
       <div class="col-sm-2">

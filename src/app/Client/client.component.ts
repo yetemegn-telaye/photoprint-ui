@@ -22,7 +22,7 @@ export class ClientComponent {
     client: Object;
     saveOrUpdate : String = "Save";
     users: Array<Object>;
-    
+    contacts: Array<Object>;
 
     constructor(private router: Router, private clientDto: ClientDto, private clientService: ClientService, private userService: UserService, private genericServices: GenericServices ) {
           if(ClientService.selectedClient != undefined || ClientService.selectedClient != null){
@@ -98,10 +98,18 @@ export class ClientComponent {
     }
 
     selectuser(user) {
-      console.log("Selected Shop: " + JSON.stringify(shop));
+      console.log("Selected Shop: " + JSON.stringify(user));
       this.clientDto.user = user;
-      console.log(JSON.stringify(this.addressDto));
+      console.log(JSON.stringify(this.clientDto));
     }
+
+
+    selectcontact(contact) {
+      console.log("Selected Shop: " + JSON.stringify(contact));
+      this.clientDto.contact = contact;
+      console.log(JSON.stringify(this.clientDto));
+    }
+    
     
     
 }

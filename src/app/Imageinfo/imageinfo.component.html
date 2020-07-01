@@ -180,6 +180,22 @@
          <br/><br/>
      </div>
   </div>
+  <div class="row form-group has-error" >
+    <div class="col-sm-2">
+    <label for="txtName" >client: </label>
+  </div>
+  <div class="col-sm-3" [class.has-error]="clientCtrl.invalid">
+      <select class="form-control"  required  pattern="[0-9]*"
+                    #clientCtrl="ngModel" [ngClass]="{ 'is-invalid': (clientCtrl.touched && clientCtrl.invalid) || (imageinfo.submitted && clientCtrl.invalid) }"
+                     [(ngModel)] = "this.imageinfoDto.count"  name="count"
+                     (ngChange) = "this.selectclient($event)">
+              <option *ngFor="let colVal of this.clients" [ngValue] = "colVal">
+                  {{colVal.countId}}
+              </option>
+      </select>
+      <br/><br/>
+   </div>
+</div>
 
  </fieldset>
 

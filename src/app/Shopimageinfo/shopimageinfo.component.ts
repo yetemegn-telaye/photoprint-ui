@@ -4,6 +4,7 @@ import {GenericServices} from './../GenericServices';
 import {ShopimageinfoService} from './shopimageinfo.service';
 import {ShopimageinfoDto} from './ShopimageinfoDto';
 import { ShopService } from "../Shop/shop.service";
+import { Imagesize } from '../Imagesize/imagesize';
 
 
 
@@ -23,6 +24,7 @@ export class ShopimageinfoComponent {
     shopimageinfo: Object;
     saveOrUpdate : String = "Save";
     shops: Array<Object>;
+    imageSize = Imagesize;
     //imageSize:
 
     
@@ -107,6 +109,13 @@ export class ShopimageinfoComponent {
       this.shopimageinfoDto.shop = shop;
       console.log(JSON.stringify(this.shopimageinfoDto));
     }
+
+    selectimageSize(imageSize) {
+      console.log("Selected Shop: " + JSON.stringify(imageSize));
+      this.shopimageinfoDto.imageSize = imageSize;
+      console.log(JSON.stringify(this.shopimageinfoDto));
+    }
+
 
     
 }

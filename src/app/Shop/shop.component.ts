@@ -4,6 +4,7 @@ import {GenericServices} from './../GenericServices';
 import {ShopService} from './shop.service';
 import {ShopDto} from './ShopDto';
 import { UserService } from "../User/user.service";
+import { Deliveryoption } from '../Deliveryoption/deliveryoption';
 
 
 
@@ -23,7 +24,7 @@ export class ShopComponent {
     shop: Object;
     saveOrUpdate : String = "Save";
     users: Array<Object>;
-
+    deliveryOpt = Deliveryoption;
     
 
     constructor(private router: Router, private shopDto: ShopDto, private shopService: ShopService, private genericServices: GenericServices , private userService: UserService
@@ -101,9 +102,9 @@ export class ShopComponent {
       )
     }
 
-    selectuser(user) {
-      console.log("Selected User: " + JSON.stringify(user));
-      this.shopDto.user = user;
+    selectdeliveryOpt(deliveryOpt) {
+      console.log("Selected User: " + JSON.stringify(deliveryOpt));
+      this.shopDto.deliveryOpt = deliveryOpt;
       console.log(JSON.stringify(this.shopDto));
     }
 

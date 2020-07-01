@@ -4,7 +4,7 @@ import {GenericServices} from './../GenericServices';
 import {ImageinfoService} from './imageinfo.service';
 import {ImageinfoDto} from './ImageinfoDto';
 import { ClientService } from "../Client/client.service";
-
+import { Imagesize } from "../Imagesize/imagesize"
 
 
 @Component({
@@ -23,7 +23,7 @@ export class ImageinfoComponent {
     imageinfo: Object;
     saveOrUpdate : String = "Save";
     clients: Array<Object>;
-
+    imageSize = Imagesize;
     
 
     constructor(private router: Router, private imageinfoDto: ImageinfoDto, private imageinfoService: ImageinfoService, private genericServices: GenericServices , private clientService: ClientService
@@ -107,5 +107,10 @@ export class ImageinfoComponent {
       console.log(JSON.stringify(this.imageinfoDto));
     }
 
+    selectimageSize(imageSize) {
+      console.log("Selected ImageSize: " + JSON.stringify(imageSize));
+      this.imageinfoDto.imageSize = imageSize;
+      console.log(JSON.stringify(this.imageinfoDto));
+    }
     
 }
