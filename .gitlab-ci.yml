@@ -1,25 +1,38 @@
-build:
 
- stage: build
+# Official framework image. Look for the different tagged releases at:
+# https://hub.docker.com/r/library/node/tags/
+image: node:latest
 
- image: trion/ng-cli
+# Pick zero or more services to be used on all builds.
+# Only needed when using a docker container to run your tests in.
+# Check out: http://docs.gitlab.com/ce/ci/docker/using_docker_images.html#what-is-a-service
+# services:
+#   - mysql:latest
+#   - redis:latest
+#   - postgres:latest
 
- before_script:
+# This folder is cached between builds
+# http://docs.gitlab.com/ce/ci/yaml/README.html#cache
 
-  - npm ci
+# stages:
+#   - dependency
+#   - build
 
- script:
+before_script:
+  - echo "***************** Start CI/CD *************"
 
-  - ng build --prod
 
- artifacts:
-
-  expire_in: 1 day
-
+cache:
   paths:
+    - node_modules/
 
-   - dist/
+dependency:
+  script:
+    - npm install
 
- tags:
+build:
+  script:
+    - npm build
 
-  - docker
+after_script:
+  - echo "************* End CI/CD *****************"
