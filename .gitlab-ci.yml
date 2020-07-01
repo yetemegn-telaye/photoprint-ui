@@ -1,4 +1,3 @@
-
 # Official framework image. Look for the different tagged releases at:
 # https://hub.docker.com/r/library/node/tags/
 image: node:latest
@@ -29,6 +28,9 @@ cache:
 dependency:
   script:
     - npm install
+  artifacts:
+    paths:
+    - node_modules/
 
 build:
   script:
