@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {GenericServices} from './../GenericServices';
 import {UserService} from './user.service';
 import {UserDto} from './UserDto';
-
+import {Userrole} from '../Userrole/userrole'
 
 
 @Component({
@@ -20,7 +20,7 @@ export class UserComponent {
     users: Array<Object>;
     user: Object;
     saveOrUpdate : String = "Save";
-    
+    role =  Userrole;
     
 
     constructor(private router: Router, private userDto: UserDto, private userService: UserService, private genericServices: GenericServices ) {
@@ -84,6 +84,11 @@ export class UserComponent {
       )
     }
 
+    selectrole(role) {
+      console.log("Selected Cardinality: " + JSON.stringify(role));
+      this.userDto.role = role;
+      console.log(JSON.stringify(this.userDto));
+    }
     
     
 }

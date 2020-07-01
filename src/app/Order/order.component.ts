@@ -4,7 +4,7 @@ import {GenericServices} from './../GenericServices';
 import {OrderService} from './order.service';
 import {OrderDto} from './OrderDto';
 import { ShopService } from "../Shop/shop.service";
-
+import {Orderstatus}  from "../Orderstatus/orderstatus";
 
 
 @Component({
@@ -23,7 +23,7 @@ export class OrderComponent {
     order: Object;
     saveOrUpdate : String = "Save";
     shops: Array<Object>;
-
+    orderStatus  = Orderstatus;
     
 
     constructor(private router: Router, private orderDto: OrderDto, private orderService: OrderService, private genericServices: GenericServices , private shopService: ShopService
@@ -107,5 +107,10 @@ export class OrderComponent {
       console.log(JSON.stringify(this.orderDto));
     }
 
+    selectorderStatus(orderStatus) {
+      console.log("Selected Shop: " + JSON.stringify(orderStatus));
+      this.orderDto.orderStatus = orderStatus;
+      console.log(JSON.stringify(this.orderDto));
+    }
     
 }

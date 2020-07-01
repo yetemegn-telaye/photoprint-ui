@@ -123,6 +123,22 @@
          <br/><br/>
      </div>
   </div>
+  <div class="row form-group has-error" >
+    <div class="col-sm-2">
+    <label for="txtName" >Shop: </label>
+  </div>
+  <div class="col-sm-3" [class.has-error]="shopCtrl.invalid">
+      <select class="form-control"
+                    #shopCtrl="ngModel" [ngClass]="{ 'is-invalid': (shopCtrl.touched && shopCtrl.invalid) || (order.submitted && shopCtrl.invalid) }"
+                     [(ngModel)] = "this.orderDto.shop"  name="shop"
+                     (ngChange) = "this.selectshop($event)">
+              <option *ngFor="let colVal of this.shops" [ngValue] = "colVal">
+                  {{colVal.orderDateId}}
+              </option>
+      </select>
+      <br/><br/>
+   </div>
+</div>
 
  </fieldset>
 

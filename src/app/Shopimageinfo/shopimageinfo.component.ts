@@ -23,6 +23,7 @@ export class ShopimageinfoComponent {
     shopimageinfo: Object;
     saveOrUpdate : String = "Save";
     shops: Array<Object>;
+    //imageSize:
 
     
 
