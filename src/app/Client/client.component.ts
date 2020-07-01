@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {GenericServices} from './../GenericServices';
 import {ClientService} from './client.service';
 import {ClientDto} from './ClientDto';
+import { UserService } from '../User/user.service';
 
 
 
@@ -10,7 +11,7 @@ import {ClientDto} from './ClientDto';
     selector: 'client',
     templateUrl: './client.component.html',
     styleUrls: ['./client.component.css'],
-    providers: [ClientDto, ClientService, GenericServices ]
+    providers: [ClientDto, ClientService, UserService, GenericServices ]
 })
 export class ClientComponent {
 
@@ -20,10 +21,10 @@ export class ClientComponent {
     clients: Array<Object>;
     client: Object;
     saveOrUpdate : String = "Save";
-    
+    users: Array<Object>;
     
 
-    constructor(private router: Router, private clientDto: ClientDto, private clientService: ClientService, private genericServices: GenericServices ) {
+    constructor(private router: Router, private clientDto: ClientDto, private clientService: ClientService, private userService: UserService, private genericServices: GenericServices ) {
           if(ClientService.selectedClient != undefined || ClientService.selectedClient != null){
             this.clientDto = ClientService.selectedClient;
             //this.clientDto.{1} = ClientService.selectedClient.{1};
@@ -31,7 +32,7 @@ export class ClientComponent {
           } else {
             this.saveOrUpdate = "Save";
           }
-	      
+	      this.getAllUsers();
     }
     
     createClientClicked() {
@@ -84,6 +85,23 @@ export class ClientComponent {
       )
     }
 
+    getAllUsers() {
+      this.userService.getAllUsers().subscribe(
+        result => {
+          if(result != null) {
+            this.users = result;
+            console.log("All Shops : " + JSON.stringify(result));
+          }
+        },
+        error => console.log(error)
+      )
+    }
+
+    selectuser(user) {
+      console.log("Selected Shop: " + JSON.stringify(shop));
+      this.clientDto.user = user;
+      console.log(JSON.stringify(this.addressDto));
+    }
     
     
 }
