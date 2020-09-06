@@ -1,10 +1,8 @@
 export class ContactDto {
     selected : boolean;
     contactId : string;
-    	client : any;
-	emailAddress : string;
-	phoneNumber : string;
-	shop : any;
+    emailAddress : string;
+    phoneNumber : string;
 
 
     toString() {

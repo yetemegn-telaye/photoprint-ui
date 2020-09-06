@@ -40,33 +40,11 @@
         <td>
             <input type="checkbox" [(ngModel)]="contact.selected"/>
         </td>
-                <td *ngIf="!this.isNotPrimitive(contact.client)">
-            <input id="chkclient" *ngIf="this.isBoolean(contact.client)" type="checkbox" [(ngModel)]="contact.client"/>
-            <span *ngIf="!this.isBoolean(contact.client)">{{contact.client}}</span>
+        <td>
+            <span>{{contact.emailAddress}}</span>
         </td>
-        <td *ngIf="this.isNotPrimitive(contact.client)">
-             {{contact.client.clientId}}
-        </td>
-        <td *ngIf="!this.isNotPrimitive(contact.emailAddress)">
-            <input id="chkemailAddress" *ngIf="this.isBoolean(contact.emailAddress)" type="checkbox" [(ngModel)]="contact.emailAddress"/>
-            <span *ngIf="!this.isBoolean(contact.emailAddress)">{{contact.emailAddress}}</span>
-        </td>
-        <td *ngIf="this.isNotPrimitive(contact.emailAddress)">
-             {{contact.emailAddress.emailAddressId}}
-        </td>
-        <td *ngIf="!this.isNotPrimitive(contact.phoneNumber)">
-            <input id="chkphoneNumber" *ngIf="this.isBoolean(contact.phoneNumber)" type="checkbox" [(ngModel)]="contact.phoneNumber"/>
-            <span *ngIf="!this.isBoolean(contact.phoneNumber)">{{contact.phoneNumber}}</span>
-        </td>
-        <td *ngIf="this.isNotPrimitive(contact.phoneNumber)">
-             {{contact.phoneNumber.phoneNumberId}}
-        </td>
-        <td *ngIf="!this.isNotPrimitive(contact.shop)">
-            <input id="chkshop" *ngIf="this.isBoolean(contact.shop)" type="checkbox" [(ngModel)]="contact.shop"/>
-            <span *ngIf="!this.isBoolean(contact.shop)">{{contact.shop}}</span>
-        </td>
-        <td *ngIf="this.isNotPrimitive(contact.shop)">
-             {{contact.shop.shopId}}
+        <td>
+            <span>{{contact.phoneNumber}}</span>
         </td>
 
     </tr>
