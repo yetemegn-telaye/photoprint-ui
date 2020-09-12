@@ -23,6 +23,7 @@ export class ImageinfoViewComponent{
         this.columns = ["" ,"imageSize"
 ,"image"
 ,"count"
+,"client"
 ];
         this.getAllImageinfosClicked();
     }

@@ -61,7 +61,9 @@
         <td *ngIf="this.isNotPrimitive(imageinfo.count)">
              {{imageinfo.count.countId}}
         </td>
-
+        <td>
+            {{imageinfo.client.firstName}} {{imageinfo.client.lastName}}
+       </td>
     </tr>
 </table>
 <!--
