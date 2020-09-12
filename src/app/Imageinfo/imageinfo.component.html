@@ -124,17 +124,6 @@
       <label for="txtName" >count: </label>
     </div>
     <div class="col-sm-3" *ngIf="this.counts === undefined && this.count === undefined" >
-       <div *ngIf="'number' === 'boolean'" [class.has-error]="countCtrl.invalid">
-          <input id="chkcount"  required  pattern="[0-9]*"
-          class="form-control" #countCtrl="ngModel" [ngClass]="{ 'is-invalid': (countCtrl.touched && countCtrl.invalid) || (imageinfo.submitted && countCtrl.invalid) }"
-          type="checkbox" name="count" [(ngModel)]="this.imageinfoDto.count"/>
-            <div *ngIf="(countCtrl.invalid) " class="invalid-feedback">
-                					<div *ngIf="countCtrl.errors.required">count is required. </div>
-					<div *ngIf="countCtrl.errors.pattern">Accepts only numbers</div>
-
-            </div>
-            <br/><br/>
-       </div>
        <div *ngIf="'number' !== 'boolean'" [class.has-error]="countCtrl.invalid">
           <input id="txtcount"  required  pattern="[0-9]*"
           class="form-control" #countCtrl="ngModel" [ngClass]="{ 'is-invalid': (countCtrl.touched && countCtrl.invalid) || (imageinfo.submitted && countCtrl.invalid) }"
@@ -147,50 +136,18 @@
             <br/><br/>
        </div>
     </div>
-    <div class="col-sm-3" *ngIf="this.counts !== undefined && this.count === undefined" [class.has-error]="countCtrl.invalid">
-        <select class="form-control"  required  pattern="[0-9]*"
-                      #countCtrl="ngModel" [ngClass]="{ 'is-invalid': (countCtrl.touched && countCtrl.invalid) || (imageinfo.submitted && countCtrl.invalid) }"
-                       [(ngModel)] = "this.imageinfoDto.count"  name="count"
-                       (ngChange) = "this.selectcount($event)">
-                <option *ngFor="let colVal of this.counts" [ngValue] = "colVal">
-                    {{colVal.countId}}
-                </option>
-        </select>
-        <div *ngIf="(countCtrl.invalid) " class="invalid-feedback">
-             					<div *ngIf="countCtrl.errors.required">count is required. </div>
-					<div *ngIf="countCtrl.errors.pattern">Accepts only numbers</div>
-
-        </div>
-        <br/><br/>
-     </div>
-    <div class="col-sm-3" *ngIf="this.count !== undefined && this.counts === undefined" [class.has-error]="countCtrl.invalid">
-         <select class="form-control"  required  pattern="[0-9]*"
-                       #countCtrl="ngModel" [ngClass]="{ 'is-invalid': (countCtrl.touched && countCtrl.invalid) || (imageinfo.submitted && countCtrl.invalid) }"
-                       [(ngModel)] = "this.imageinfoDto.count" name="count"
-                       (ngChange) = "this.selectcount($event)">
-                 <option *ngFor="let colVal of this.count.values()" [ngValue] = "colVal">
-                     {{colVal}}
-                 </option>
-         </select>
-         <div *ngIf="(countCtrl.invalid)" class="invalid-feedback">
-              					<div *ngIf="countCtrl.errors.required">count is required. </div>
-					<div *ngIf="countCtrl.errors.pattern">Accepts only numbers</div>
-
-         </div>
-         <br/><br/>
-     </div>
   </div>
   <div class="row form-group has-error" >
     <div class="col-sm-2">
     <label for="txtName" >client: </label>
   </div>
   <div class="col-sm-3" [class.has-error]="clientCtrl.invalid">
-      <select class="form-control"  required  pattern="[0-9]*"
+      <select class="form-control"
                     #clientCtrl="ngModel" [ngClass]="{ 'is-invalid': (clientCtrl.touched && clientCtrl.invalid) || (imageinfo.submitted && clientCtrl.invalid) }"
-                     [(ngModel)] = "this.imageinfoDto.count"  name="count"
+                     [(ngModel)] = "this.imageinfoDto.client"  name="client"
                      (ngChange) = "this.selectclient($event)">
               <option *ngFor="let colVal of this.clients" [ngValue] = "colVal">
-                  {{colVal.countId}}
+                  {{colVal.clientId}}
               </option>
       </select>
       <br/><br/>
