@@ -1,46 +1,58 @@
-# Official framework image. Look for the different tagged releases at:
-# https://hub.docker.com/r/library/node/tags/
-image: node:latest
-
-# Pick zero or more services to be used on all builds.
-# Only needed when using a docker container to run your tests in.
-# Check out: http://docs.gitlab.com/ce/ci/docker/using_docker_images.html#what-is-a-service
-# services:
-#   - mysql:latest
-#   - redis:latest
-#   - postgres:latest
-
-# This folder is cached between builds
-# http://docs.gitlab.com/ce/ci/yaml/README.html#cache
-
-# stages:
-#   - dependency
-#   - build
+image: timbru31/java-node
 
 stages:
-  - dependencies
-  - build
+    - deploy
+
+variables: 
+   BUNDLE_SRC: deploy-code.zip # defines the zipfile to upload to s3
+   ZIP_NAME: photoprinter-ui.zip
 
 before_script:
   - echo "***************** Start CI/CD *************"
 
+# dependencies:
+#   stage: dependencies
+#   script:
+#     - npm install
+#   artifacts:
+#     paths:
+#     - node_modules/
 
-cache:
-  paths:
-    - node_modules/
 
-dependencies:
-  stage: dependencies
-  script:
-    - npm install
-  artifacts:
-    paths:
-    - node_modules/
+# cache:
+#   paths:
+#     - node_modules/
 
-build:
-  stage: build
-  script:
-    - npm build
+# build:
+#   stage: build
+#   script:
+#     - npm build
+
+deploy-job:
+    stage: deploy
+    only:
+        - master
+    except: 
+        - triggers
+    script: 
+        - apt-get update -qq && apt-get install -y -qq unzip zip
+        - apt-get install -y python3-distutils
+        - curl -O https://bootstrap.pypa.io/get-pip.py
+        - python3 get-pip.py
+        - npm install -g @angular/cli
+        - rm -rf dist *.zip deploy-base
+        - unset CI
+        - npm cache clean --force
+        - ng build --prod
+        - mv -f dist deploy-base
+        - zip -r $BUNDLE_SRC deploy-base
+        - pip install awscli # AWS CLI installation
+        - aws s3 cp $BUNDLE_SRC $AWS_S3_LOCATION$ZIP_NAME #upload the zipfile to s3
+    cache: 
+       key: "ui-$CI_BUILD_NAME-$CI_BUILD_REF_NAME"
+       untracked: true 
+       paths:
+           - dist/
 
 after_script:
   - echo "************* End CI/CD *****************"
