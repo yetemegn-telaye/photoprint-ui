@@ -62,59 +62,7 @@
          <br/><br/>
      </div>
   </div>
-<div class="row form-group has-error" >
-      <div class="col-sm-2">
-      <label for="txtName" >client: </label>
-    </div>
-    <div class="col-sm-3" *ngIf="this.clients === undefined && this.client === undefined" >
-       <div *ngIf="'any' === 'boolean'" [class.has-error]="clientCtrl.invalid">
-          <input id="chkclient" 
-          class="form-control" #clientCtrl="ngModel" [ngClass]="{ 'is-invalid': (clientCtrl.touched && clientCtrl.invalid) || (user.submitted && clientCtrl.invalid) }"
-          type="checkbox" name="client" [(ngModel)]="this.userDto.client"/>
-            <div *ngIf="(clientCtrl.invalid) " class="invalid-feedback">
-                
-            </div>
-            <br/><br/>
-       </div>
-       <div *ngIf="'any' !== 'boolean'" [class.has-error]="clientCtrl.invalid">
-          <input id="txtclient" 
-          class="form-control" #clientCtrl="ngModel" [ngClass]="{ 'is-invalid': (clientCtrl.touched && clientCtrl.invalid) || (user.submitted && clientCtrl.invalid) }"
-           name="client" type="text" [(ngModel)]="this.userDto.client"/>
-            <div *ngIf="(clientCtrl.invalid) " class="invalid-feedback">
-                 
-            </div>
-            <br/><br/>
-       </div>
-    </div>
-    <div class="col-sm-3" *ngIf="this.clients !== undefined && this.client === undefined" [class.has-error]="clientCtrl.invalid">
-        <select class="form-control" 
-                      #clientCtrl="ngModel" [ngClass]="{ 'is-invalid': (clientCtrl.touched && clientCtrl.invalid) || (user.submitted && clientCtrl.invalid) }"
-                       [(ngModel)] = "this.userDto.client"  name="client"
-                       (ngChange) = "this.selectclient($event)">
-                <option *ngFor="let colVal of this.clients" [ngValue] = "colVal">
-                    {{colVal.clientId}}
-                </option>
-        </select>
-        <div *ngIf="(clientCtrl.invalid) " class="invalid-feedback">
-             
-        </div>
-        <br/><br/>
-     </div>
-    <div class="col-sm-3" *ngIf="this.client !== undefined && this.clients === undefined" [class.has-error]="clientCtrl.invalid">
-         <select class="form-control" 
-                       #clientCtrl="ngModel" [ngClass]="{ 'is-invalid': (clientCtrl.touched && clientCtrl.invalid) || (user.submitted && clientCtrl.invalid) }"
-                       [(ngModel)] = "this.userDto.client" name="client"
-                       (ngChange) = "this.selectclient($event)">
-                 <option *ngFor="let colVal of this.client.values()" [ngValue] = "colVal">
-                     {{colVal}}
-                 </option>
-         </select>
-         <div *ngIf="(clientCtrl.invalid)" class="invalid-feedback">
-              
-         </div>
-         <br/><br/>
-     </div>
-  </div>
+
 <div class="row form-group has-error" >
       <div class="col-sm-2">
       <label for="txtName" >userName: </label>
