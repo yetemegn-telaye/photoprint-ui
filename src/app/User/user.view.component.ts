@@ -21,7 +21,6 @@ export class UserViewComponent{
 
     constructor(private router: Router, private userDto: UserDto, private userService: UserService, private confirmationDialogService:  ConfirmationDialogService, private messageDialogService: MessageDialogService, private genericServices: GenericServices) {
         this.columns = ["" ,"role"
-,"client"
 ,"userName"
 ,"password"
 ];
