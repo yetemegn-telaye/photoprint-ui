@@ -39,11 +39,11 @@ deploy-job:
         - apt-get install -y python3-distutils
         - curl -O https://bootstrap.pypa.io/get-pip.py
         - python3 get-pip.py
+        - rm -rf dist *.zip deploy-base
+        - rm package-lock.json
         - npm install -g npm@latest
         - npm install -g @angular/cli
         - ng update @angular/cli @angular/core
-        - rm -rf dist *.zip deploy-base
-        - rm package-lock.json
         - rm -rf node_modules
         - unset CI
         - npm cache clean --force
