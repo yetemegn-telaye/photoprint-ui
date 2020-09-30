@@ -43,7 +43,9 @@ deploy-job:
         - npm install -g npm@latest
         - npm cache clean --force
         - npm i @angular-devkit/schematics
-        - npm install -g @angular/cli
+        - npm uninstall -g @angular/cli
+        - npm cache clean
+        - npm install -g @angular/cli@7.3.9
         - rm -rf dist *.zip deploy-base
         - unset CI
         - npm uninstall @angular-devkit/build-angular
