@@ -46,9 +46,9 @@ deploy-job:
         - npm install -g @angular/cli@7.3.9
         - rm -rf dist *.zip deploy-base
         - unset CI
-        - npm uninstall @angular-devkit/build-angular
-        - npm cache clean --force
-        - npm install @angular-devkit/build-angular
+        # - npm uninstall @angular-devkit/build-angular
+        # - npm cache clean --force
+        # - npm install @angular-devkit/build-angular
         - ng build --prod
         - mv -f dist deploy-base
         - zip -r $BUNDLE_SRC deploy-base
