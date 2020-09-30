@@ -43,6 +43,8 @@ deploy-job:
         - npm install -g @angular/cli
         - ng update @angular/cli @angular/core
         - rm -rf dist *.zip deploy-base
+        - rm package-lock.json
+        - rm -rf node_modules
         - unset CI
         - npm cache clean --force
         - ng build --prod
