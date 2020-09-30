@@ -48,7 +48,6 @@ deploy-job:
         - unset CI
         - npm uninstall @angular-devkit/build-angular
         - npm install @angular-devkit/build-angular
-        - ng update --all
         - ng build --prod
         - mv -f dist deploy-base
         - zip -r $BUNDLE_SRC deploy-base
