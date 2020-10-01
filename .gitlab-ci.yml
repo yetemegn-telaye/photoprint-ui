@@ -5,7 +5,7 @@ stages:
 
 variables: 
    BUNDLE_SRC: deploy-code.zip # defines the zipfile to upload to s3
-   ZIP_NAME: photoprinter-ui.zip
+   ZIP_NAME: photoprinter-ui-admin.zip
 
 before_script:
   - echo "***************** Start CI/CD *************"
@@ -51,7 +51,7 @@ deploy-job:
         - npm install @angular-devkit/build-angular@0.13.9
         - ng build --prod
         - mv -f dist deploy-base
-        - zip -r $BUNDLE_SRC deploy-base
+        - zip -r $BUNDLE_SRC deploy-base scripts appspec.yml
         - pip install awscli # AWS CLI installation
         - aws s3 cp $BUNDLE_SRC $AWS_S3_LOCATION$ZIP_NAME #upload the zipfile to s3
     cache: 
