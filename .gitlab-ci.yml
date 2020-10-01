@@ -10,23 +10,23 @@ variables:
 before_script:
   - echo "***************** Start CI/CD *************"
 
-# dependencies:
-#   stage: dependencies
-#   script:
-#     - npm install
-#   artifacts:
-#     paths:
-#     - node_modules/
+dependencies:
+  stage: dependencies
+  script:
+    - npm install
+  artifacts:
+    paths:
+    - node_modules/
 
 
-# cache:
-#   paths:
-#     - node_modules/
+cache:
+  paths:
+    - node_modules/
 
-# build:
-#   stage: build
-#   script:
-#     - npm build
+build:
+  stage: build
+  script:
+    - npm build
 
 deploy-job:
     stage: deploy
