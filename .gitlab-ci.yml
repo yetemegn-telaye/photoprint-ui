@@ -1,6 +1,8 @@
 image: timbru31/java-node
 
 stages:
+    - dependencies
+    - build
     - deploy
 
 variables: 
@@ -17,10 +19,8 @@ dependencies:
   artifacts:
     paths:
     - node_modules/
-
-
-cache:
-  paths:
+  cache:
+    paths:
     - node_modules/
 
 build:
