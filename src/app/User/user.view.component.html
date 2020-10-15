@@ -47,13 +47,6 @@
         <td *ngIf="this.isNotPrimitive(user.role)">
              {{user.role.roleId}}
         </td>
-        <td *ngIf="!this.isNotPrimitive(user.client)">
-            <input id="chkclient" *ngIf="this.isBoolean(user.client)" type="checkbox" [(ngModel)]="user.client"/>
-            <span *ngIf="!this.isBoolean(user.client)">{{user.client}}</span>
-        </td>
-        <td *ngIf="this.isNotPrimitive(user.client)">
-             {{user.client.clientId}}
-        </td>
         <td *ngIf="!this.isNotPrimitive(user.userName)">
             <input id="chkuserName" *ngIf="this.isBoolean(user.userName)" type="checkbox" [(ngModel)]="user.userName"/>
             <span *ngIf="!this.isBoolean(user.userName)">{{user.userName}}</span>

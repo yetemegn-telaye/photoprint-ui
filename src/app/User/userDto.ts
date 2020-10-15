@@ -1,8 +1,8 @@
 export class UserDto {
     selected : boolean;
     userId : string;
+    client : any;
     	role : any;
-	client : any;
 	userName : string;
 	password : string;
 	shops : Set<any>;
