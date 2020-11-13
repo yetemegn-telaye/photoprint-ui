@@ -15,7 +15,7 @@
     </div>
     <div class="col-sm-3" *ngIf="this.orderDates === undefined && this.orderDate === undefined" >
        <div *ngIf="'Date' === 'boolean'" [class.has-error]="orderDateCtrl.invalid">
-          <input id="chkorderDate"  required
+          <input id="chkorderDate" 
           class="form-control" #orderDateCtrl="ngModel" [ngClass]="{ 'is-invalid': (orderDateCtrl.touched && orderDateCtrl.invalid) || (order.submitted && orderDateCtrl.invalid) }"
           type="checkbox" name="orderDate" [(ngModel)]="this.orderDto.orderDate"/>
             <div *ngIf="(orderDateCtrl.invalid) " class="invalid-feedback">
@@ -25,7 +25,7 @@
             <br/><br/>
        </div>
        <div *ngIf="'Date' !== 'boolean'" [class.has-error]="orderDateCtrl.invalid">
-          <input id="txtorderDate"  required
+          <input id="txtorderDate"  
           class="form-control" #orderDateCtrl="ngModel" [ngClass]="{ 'is-invalid': (orderDateCtrl.touched && orderDateCtrl.invalid) || (order.submitted && orderDateCtrl.invalid) }"
            name="orderDate" type="text" [(ngModel)]="this.orderDto.orderDate"/>
             <div *ngIf="(orderDateCtrl.invalid) " class="invalid-feedback">
@@ -36,7 +36,7 @@
        </div>
     </div>
     <div class="col-sm-3" *ngIf="this.orderDates !== undefined && this.orderDate === undefined" [class.has-error]="orderDateCtrl.invalid">
-        <select class="form-control"  required
+        <select class="form-control" 
                       #orderDateCtrl="ngModel" [ngClass]="{ 'is-invalid': (orderDateCtrl.touched && orderDateCtrl.invalid) || (order.submitted && orderDateCtrl.invalid) }"
                        [(ngModel)] = "this.orderDto.orderDate"  name="orderDate"
                        (ngChange) = "this.selectorderDate($event)">
