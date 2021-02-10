@@ -70,7 +70,7 @@
        <div *ngIf="'string' === 'boolean'" [class.has-error]="workingDaysCtrl.invalid">
           <input id="chkworkingDays" 
           class="form-control" #workingDaysCtrl="ngModel" [ngClass]="{ 'is-invalid': (workingDaysCtrl.touched && workingDaysCtrl.invalid) || (shop.submitted && workingDaysCtrl.invalid) }"
-          type="checkbox" name="workingDays" [(ngModel)]="this.shopDto.workingDays"/>
+          type="text" name="workingDays" [(ngModel)]="this.shopDto.workingDays"/>
             <div *ngIf="(workingDaysCtrl.invalid) " class="invalid-feedback">
                 
             </div>

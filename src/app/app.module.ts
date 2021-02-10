@@ -42,6 +42,10 @@ import { OrderViewEditComponent } from './Order/order.view.edit.component';
 import { ContactComponent } from './Contact/contact.component';
 import { ContactViewComponent } from './Contact/contact.view.component';
 import { ContactViewEditComponent } from './Contact/contact.view.edit.component';
+import { UserLoginUIComponent } from './user-login-ui/user-login-ui.component';
+import { SignupUiComponent } from './signup-ui/signup-ui.component';
+import { SignupUiTwoComponent } from './signup-ui-two/signup-ui-two.component';
+import { ShopHomeUiComponent } from './shop-home-ui/shop-home-ui.component';
 
 
 @NgModule({
@@ -74,7 +78,11 @@ ContactViewEditComponent,
     ConfirmationDialogComponent,
     MessageDialogComponent,
     ErrorDialogComponent,
-    AppComponent
+    AppComponent,
+    UserLoginUIComponent,
+    SignupUiComponent,
+    SignupUiTwoComponent,
+    ShopHomeUiComponent
   ],
   imports: [
     BrowserModule,

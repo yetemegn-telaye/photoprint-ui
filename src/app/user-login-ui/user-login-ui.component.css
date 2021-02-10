@@ -1,0 +1,38 @@
+
+.section{
+    display: grid;
+    grid-template-columns: 260px;
+    grid-template-rows: repeat(5, 60px);
+    justify-content: center;
+    grid-gap: 10px;
+}
+.logTitles{
+    display: flex;
+    font-style: italic;
+    grid-column: 1/ span 2; 
+    color: chocolate; 
+    font-weight: bold;
+}
+
+
+.Btns{
+    display: flex;
+    grid-column: 1/ span 2;
+    border-radius: 30px;
+}
+
+.insidebtn{
+        background-color: white;
+        color: black;
+        border: 2px solid #220241; 
+        border-radius: 30px;
+        width: 260px;
+}
+.userTxt{
+    font-weight: bold;
+    text-align: center;
+    height: 60px;
+}
+.itemContent{
+    margin: auto;
+}

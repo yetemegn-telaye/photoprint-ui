@@ -23,12 +23,21 @@ import { OrderViewEditComponent } from './Order/order.view.edit.component';
 import { ContactComponent } from './Contact/contact.component';
 import { ContactViewComponent } from './Contact/contact.view.component';
 import { ContactViewEditComponent } from './Contact/contact.view.edit.component';
+import {UserLoginUIComponent} from './user-login-ui/user-login-ui.component';
+import {SignupUiComponent} from './signup-ui/signup-ui.component';
+import {SignupUiTwoComponent} from './signup-ui-two/signup-ui-two.component';
+import {ShopHomeUiComponent} from './shop-home-ui/shop-home-ui.component';
+import { from } from 'rxjs';
 
 //import { AuxRoute } from '@angular/router';
 
 //import { LoginPageDecorationComponent } from './login/loginPageDecoration/loginPageDecoration.component'
 
 export const rootRouterConfig: Routes = [
+  {path: "", component: UserLoginUIComponent},
+  {path: "user-login-ui/signup-ui", component: SignupUiComponent},
+  {path: "user-login-ui/signup-ui/signup-ui-two", component: SignupUiTwoComponent},
+  {path: "user-login-ui/signup-ui/signup-ui-two/shop-home-ui", component: ShopHomeUiComponent},
   { path: "clients", component: ClientComponent},
 { path: "clients/:clientId", component: ClientComponent },
 { path: "clients-view", component: ClientViewComponent},
