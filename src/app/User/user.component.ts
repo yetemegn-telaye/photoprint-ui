@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {Router} from '@angular/router';
 import {GenericServices} from './../GenericServices';
 import {UserService} from './user.service';
@@ -12,7 +12,7 @@ import {Userrole} from '../Userrole/userrole'
     styleUrls: ['./user.component.css'],
     providers: [UserDto, UserService, GenericServices ]
 })
-export class UserComponent {
+export class UserComponent implements OnChanges{
 
     error: string;
     result:Array<Object>;
@@ -21,6 +21,8 @@ export class UserComponent {
     user: Object;
     saveOrUpdate : String = "Save";
     role =  Userrole;
+    @Output() public valueChange = new EventEmitter(); 
+    @Input("userValue") public userValue: UserDto;
     
 
     constructor(private router: Router, private userDto: UserDto, private userService: UserService, private genericServices: GenericServices ) {
@@ -31,8 +33,21 @@ export class UserComponent {
           } else {
             this.saveOrUpdate = "Save";
           }
+          this.valueChange.emit(this.userDto);
 	      
     }
+
+    ngOnChanges(changes: SimpleChanges) {
+       
+        if(changes.userValue.currentValue != null)
+          this.userDto = changes.userValue.currentValue;
+    }
+
+    updateModel() {
+      alert('HERE');
+      this.valueChange.emit(this.userDto);
+    }
+
     
     createUserClicked() {
       this.userService.createUser(this.userDto).subscribe(

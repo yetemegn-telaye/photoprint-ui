@@ -1,0 +1,20 @@
+
+<h4> Sign up </h4>
+<p>
+    welcome to photoprinter app, we are commitued to print your photos and deliver it. 
+    so you may enjoy ... 
+</p>
+<form  (ngSubmit)="this.registerUser()" >
+    
+<user (userChange) = "this.captureUserChange($event)"></user>
+<client (clientChange) = "this.captureClientChange($event)")></client>
+
+<div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+         <input type="submit" value="Sign Up"/>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+
+</form>

@@ -1,11 +1,4 @@
-<div class="row">
-    <div class="col-sm-3"> <h3> Address </h3></div>
-    <div class="col-sm-3"> </div>
-    <div class="col-sm-3"> </div>
-    <div class="col-sm-3">
-        <input type="button" [routerLink]="['/addresss-view']" value="View All"/>
-    </div>
-</div>
+
 
 <form #address="ngForm" name="frmAddress" (ngSubmit)="address.form.valid && this.createAddressClicked()">
  <fieldset style="padding:3%; min-height: 250px;">
@@ -414,12 +407,3 @@
   </div>
 
  </fieldset>
-
-   <div class="row">
-     <div class="col-sm-4"></div>
-     <div class="col-sm-4">
-          <input type="submit" value="Save"/>
-     </div>
-     <div class="col-sm-4"></div>
-   </div>
-</form>

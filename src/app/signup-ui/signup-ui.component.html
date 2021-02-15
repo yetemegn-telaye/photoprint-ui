@@ -1,11 +1,10 @@
 <div class="signupBody">
   <div class="cardAddress card"> 
+    <user (valueChange)='captureUserDtoChange($event)' ></user>
     <address></address>
-  </div>
-  <div class="cardContact card"> 
     <contact></contact>
   </div>
   <div class="nxt">
-    <input type="button" class="nxtBtn" [routerLink]="['/user-login-ui/signup-ui/signup-ui-two']" value="Next"/>
+    <input type="button" class="nxtBtn" (click)="this.signUp()" value="Next"/>
   </div>
 </div>

@@ -1,13 +1,6 @@
-<div class="row">
-    <div class="col-sm-3"> <h3> User </h3></div>
-    <div class="col-sm-3"> </div>
-    <div class="col-sm-3"> </div>
-    <div class="col-sm-3">
-        <input type="button" [routerLink]="['/users-view']" value="View All"/>
-    </div>
-</div>
 
-<form #user="ngForm" name="frmUser" (ngSubmit)="user.form.valid && this.createUserClicked()">
+
+<form #user="ngForm" name="frmUser" (ngSubmit)="user.form.valid && this.createUserClicked()" (change)="this.updateModel()">
  <fieldset style="padding:3%; min-height: 250px;">
   <div class="row form-group has-error" >
       <div class="col-sm-2">
@@ -179,12 +172,3 @@
   </div>
 
  </fieldset>
-
-   <div class="row">
-     <div class="col-sm-4"></div>
-     <div class="col-sm-4">
-          <input type="submit" value="Save"/>
-     </div>
-     <div class="col-sm-4"></div>
-   </div>
-</form>
